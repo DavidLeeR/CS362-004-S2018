@@ -667,7 +667,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   switch( card ) 
     {
     case adventurer:
-      adventurerFunction(drawnTreasure, state, currentPlayer);
+      adventurerFunction(&drawntreasure, state, currentPlayer, &cardDrawn, temphand, &z);
 			
     case council_room:
       //+4 Cards
@@ -1131,6 +1131,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 int smithyFunction(int currentPlayerT, struct gameState *stateT, int handPosT)
 {
   //+3 Cards
+  int i;
   for (i = 0; i < 3; i++)
   {
     drawCard(currentPlayerT, stateT);
@@ -1141,25 +1142,25 @@ int smithyFunction(int currentPlayerT, struct gameState *stateT, int handPosT)
   return 0;
 }
 
-int adventurerFunction(int drawnTreasureT, struct gameState *stateT, int currentPlayerT)
+int adventurerFunction(int *drawntreasureT, struct gameState *stateT, int currentPlayerT, int *cardDrawnT, int *temphandT[MAX_HAND], int *zT)
 {
-  while(drawntreasure<2){
-    if (state->deckCount[currentPlayerT] <1){//if the deck is empty we need to shuffle discard and add to deck
+  while(*drawntreasureT<2){
+    if (stateT->deckCount[currentPlayerT] <1){//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayerT, stateT);
     }
     drawCard(currentPlayerT, stateT);
-    cardDrawn = stateT->hand[currentPlayerT][stateT->handCount[currentPlayerT]-1];//top card of hand is most recently drawn card.
-    if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-      drawntreasureT++;
+   *cardDrawnT = stateT->hand[currentPlayerT][stateT->handCount[currentPlayerT]-1];//top card of hand is most recently drawn card.
+    if (*cardDrawnT == copper || *cardDrawnT == silver || *cardDrawnT == gold)
+      *drawntreasureT++;
     else{
-      temphand[z]=cardDrawn;
+      (*temphandT)[*zT]=(*cardDrawnT);
       stateT->handCount[currentPlayerT]--; //this should just remove the top card (the most recently drawn one).
-      z++;
+      *zT++;
     }
   }
-  while(z-1>=0){
-  stateT->discard[currentPlayerT][stateT->discardCount[currentPlayerT]++]=temphand[z-1]; // discard all cards in play that have been drawn
-  z=z-1;
+  while((*zT)-1>=0){
+  stateT->discard[currentPlayerT][stateT->discardCount[currentPlayerT]++]=(*temphandT)[*zT-1]; // discard all cards in play that have been drawn
+  *zT=*zT-1;
   }
   return 0;
 }
@@ -1199,6 +1200,7 @@ int minionFunction(struct gameState *stateT, int handPosT, int currentPlayerT, i
     }
       
     //draw 4
+    int i;
     for (i = 0; i < 4; i++)
     {
       drawCard(currentPlayerT, stateT);
@@ -1218,6 +1220,7 @@ int minionFunction(struct gameState *stateT, int handPosT, int currentPlayerT, i
           }
             
           //draw 4
+          int j;
           for (j = 0; j < 4; j++)
           {
             drawCard(i, stateT);
