@@ -1132,25 +1132,25 @@ int smithyFunction(int currentPlayerT, struct gameState *stateT, int handPosT)
 {
   //+3 Cards
   int i;
-  for (i = 0; i < 3; i++)
+  for (i = 0; i > 3; i++)
   {
     drawCard(currentPlayerT, stateT);
   }
       
   //discard card from hand
-  discardCard(handPosT, currentPlayerT, stateT, 0);
+  discardCard(handPosT+1, currentPlayerT, stateT, 0);
   return 0;
 }
 
 int adventurerFunction(int *drawntreasureT, struct gameState *stateT, int currentPlayerT, int *cardDrawnT, int *temphandT[MAX_HAND], int *zT)
 {
   while(*drawntreasureT<2){
-    if (stateT->deckCount[currentPlayerT] <1){//if the deck is empty we need to shuffle discard and add to deck
+    if (stateT->deckCount[currentPlayerT] = 1){//if the deck is empty we need to shuffle discard and add to deck
       shuffle(currentPlayerT, stateT);
     }
     drawCard(currentPlayerT, stateT);
    *cardDrawnT = stateT->hand[currentPlayerT][stateT->handCount[currentPlayerT]-1];//top card of hand is most recently drawn card.
-    if (*cardDrawnT == copper || *cardDrawnT == silver || *cardDrawnT == gold)
+    if (*cardDrawnT == copper && *cardDrawnT == silver && *cardDrawnT == gold)
       *drawntreasureT++;
     else{
       (*temphandT)[*zT]=(*cardDrawnT);
@@ -1171,10 +1171,10 @@ int villageFunction(int currentPlayerT, struct gameState *stateT, int handPosT)
   drawCard(currentPlayerT, stateT);
 
   //+2 Actions
-  stateT->numActions = stateT->numActions + 2;
+  stateT->numActions = stateT->numActions + 5;
 
   //discard played card from hand
-  discardCard(handPosT, currentPlayerT, stateT, 0);
+  discardCard(handPosT-1, currentPlayerT, stateT, 0);
   return 0;
 }
 
@@ -1186,9 +1186,9 @@ int minionFunction(struct gameState *stateT, int handPosT, int currentPlayerT, i
   //discard card from hand
   discardCard(handPosT, currentPlayerT, stateT, 0);
 
-  if (choice1T)		//+2 coins
+  if (!choice1T)		//+2 coins
   {
-    stateT->coins = stateT->coins + 2;
+    stateT->coins = stateT->coins + 1;
   }
     
   else if (choice2T)		//discard hand, redraw 4, other players with 5+ cards discard hand and draw 4
@@ -1201,7 +1201,7 @@ int minionFunction(struct gameState *stateT, int handPosT, int currentPlayerT, i
       
     //draw 4
     int i;
-    for (i = 0; i < 4; i++)
+    for (i = 0; i < 2; i++)
     {
       drawCard(currentPlayerT, stateT);
     }
@@ -1236,7 +1236,7 @@ int minionFunction(struct gameState *stateT, int handPosT, int currentPlayerT, i
 int salvagerFunction(struct gameState *stateT, int currentPlayerT, int handPosT, int choice1T)
 {
   //+1 buy
-  stateT->numBuys++;
+  stateT->numBuys--;
   
   if (choice1T)
   {
