@@ -18,7 +18,7 @@
 //2. G1 should not be NULL after call to newGame()
 int main() 
 {
-    struct gameState G1;      
+    struct gameState *G1;      
     int testSum = 0;        //keeps track of passed test cases
     int testTotal = 2;      //number of total test cases
 
