@@ -39,12 +39,12 @@ int main()
 
     if(tester == 0)
     {
-        printf("Unit Test 1, part 1 (call function after initialization)... \n      PASS\n     expected result: isGameOver() == 0\n     actual result: isGameOver() == %d\n", tester);  
+        printf("Unit Test 1, part 1 (call function after initialization)... \n     PASS\n     expected result: isGameOver() == 0\n     actual result: isGameOver() == %d\n", tester);  
         testSum++;
     }
     else if(tester != 0)
     {
-        printf("Unit Test 1, part 1 (call function after initialization)... \n      FAIL\n     expected result: isGameOver() == 0\n     actual result: isGameOver() == %d\n", tester);  
+        printf("Unit Test 1, part 1 (call function after initialization)... \n     FAIL\n     expected result: isGameOver() == 0\n     actual result: isGameOver() == %d\n", tester);  
     }
 
 
