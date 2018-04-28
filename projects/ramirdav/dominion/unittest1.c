@@ -37,11 +37,11 @@ int main()
 
 
     //part 2.
-    G->supplyCount[province] = 0;
+    G.supplyCount[province] = 0;
 
     tester = isGameOver(&G);
     printf("Unit Test 1, part 2...  expected result: isGameOver() == 1 , actual result: isGameOver == %d\n", tester);  
-    assert(tester == 1)             //isGameOver() should return 1 to show that the game should end
+    assert(tester == 1);             //isGameOver() should return 1 to show that the game should end
 
     //part 3.
     
