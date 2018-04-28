@@ -20,14 +20,21 @@
 int main() 
 {
     //test params 1
-    const void* a1 = 0;
-    const void* b1 = 100;
+    int* a1 = malloc(sizeof(int));
+    *a1 = 0;
+    int* b1 = malloc(sizeof(int));
+    *b1 = 100;
     //test params 2
-    const void* a2 = 100;
-    const void* b2 = 0
+    int* a2 = malloc(sizeof(int));
+    *a2 = 100;
+    int* b2 = malloc(sizeof(int));
+    *b2 = 0;
     //test params 3
-    const void* a3 = 15;
-    const void* b3 = 15;
+    int* a3 = malloc(sizeof(int));
+    *a3 = 15;
+    int* b3 = malloc(sizeof(int));
+    *b3 = 15;
+
 
     int result;
     int testSum = 0;        //keeps track of passed test cases
