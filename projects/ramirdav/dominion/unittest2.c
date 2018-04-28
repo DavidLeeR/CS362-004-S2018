@@ -33,6 +33,7 @@ int main()
     }
     else if(G1 != NULL)
     {
+        printf("%d", G1);
         printf("Unit Test 2: part 1(check if G1 == NULL before call to newGame())... \n     FAIL\n     expected result: G1 == NULL\n     actual result: G1 != NULL\n");
     }
 
