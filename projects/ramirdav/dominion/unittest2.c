@@ -13,7 +13,7 @@
 #include <assert.h>
 #include "rngs.h"
 
-//Unit Test for newGame() function
+//Unit Test 2: newGame() function
 //1. G1 should not point to NULL after call to newGame(), signifying a new memory address for G1
 //2. G1->numPlayers and G1->playedCardCount should both return 0, showing that memory has been corrctly allocated for the struct
 //	-If test case 2 fails, a segmentation fault will result 

@@ -13,7 +13,7 @@
 #include <assert.h>
 #include "rngs.h"
 
-//Unit Test for isGameOver() function
+//Unit Test 1: isGameOver() function
 //1. isGameOver() should return 0 (continue game) if called directly after initializing game (ie. when supply cards and province card are full)
 //2. isGameOver() should return 1 (game over) if there are 0 province cards left
 //3. isGameOver() should return 1 (game over) if there are 3 empty supply piles
