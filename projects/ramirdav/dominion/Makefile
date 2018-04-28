@@ -41,7 +41,6 @@ unittests.out: unittest1.c unittest2.c dominion.c rngs.c interface.c
 	gcc -o unittest1 dominion.c rngs.c interface.c unittest1.c $(CFLAGS)
 	unittest1 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
-
 	echo "unittest2.c:" >> unittestresults.out
 	gcc -o unittest2 dominion.c rngs.c interface.c unittest2.c $(CFLAGS)
 	unittest2 >> unittestresults.out
