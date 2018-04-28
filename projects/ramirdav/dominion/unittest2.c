@@ -3,7 +3,7 @@
  * Assignment 3: unit tests
  * Unit Test 2: newGame() function
  * Author: David Ramirez
- * Date: 4/19/18
+ * Date: 4/29/18
  * *********************************************************/
 
 #include "dominion.h"
@@ -21,11 +21,11 @@ int main()
 {
     struct gameState *G1 = NULL;
     int testSum = 0;        //keeps track of passed test cases
-    int testTotal = 1;      //number of total test cases
+    int testTotal = 2;      //number of total test cases
 
 
     /***************************************************************************************
-     *PART 1: check if G1 points to different address than G1Copy                          *
+     *PART 1: check if G1 points to NULL                                                   *
      ***************************************************************************************/
     //call new game, returning a new memory address for G1
     G1 = newGame();
@@ -33,12 +33,28 @@ int main()
     if(G1 != NULL)
     {
         printf("Unit Test 2: part 1 (check if new memory address for G1 after call to newGame() is not NULL)... \n     PASS\n     expected result: G1 != NULL\n     actual result: G1 != NULL\n");
-	testSum++;
+	    testSum++;
     }
     else if(G1 == NULL)
     {
         printf("Unit Test 2: part 1(check if new memory address for G1 after call to newGame() is not NULL)... \n     FAIL\n     expected result: G1 != NULL\n     actual result: G1 == NULL\n");
     }
+
+
+    /***************************************************************************************
+     *PART 2: check if G1->playerNum == 0 and G1->playedCardCount == 0                     *
+     ***************************************************************************************/
+    printf("*NOTE*: If Unit Test 2: part 2 fails, a segmentation fault will occur and will result in a missing \"Unit Test2:part 2\" line directly after this line.\n");
+    if(G1->playerNum == 0 && G1-playerCardCount == 0)
+    {
+        printf("Unit Test 2: part 2 (check if G1->playerNum and G1->playerCardCount both equal 0... \n     PASS\n     expected result: playerNum == 0 && playerCardCount == 0\n     actual result: playerNum == 0 && playerCardCount ==0\n");
+        testSum++;
+    }
+    else
+    {
+        //there is nothing here because a seg fault will happen if this test case fails
+    }
+
 
     /***************************************************************************************
     *                         OUTPUT TOTAL UNIT TEST RESULTS                              *
@@ -52,8 +68,6 @@ int main()
     //if all test cases passed, output success message
     else if (testSum == testTotal)
         printf("Unit Test 2 passed all test cases \n");
-    
-    printf("%d      %d", G1->numPlayers, G1->playedCardCount);
 
     return 0;
 }
