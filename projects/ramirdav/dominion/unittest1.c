@@ -75,7 +75,7 @@ int main()
     G4a.supplyCount[3] = 0;
     G4a.supplyCount[4] = 0;
 
-    tester = isGameOver(&G4a)
+    tester = isGameOver(&G4a);
     printf("Unit Test 1, part 4.a (call function after 4 types of supply cards = 0)... \n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", tester);
     if(tester == 1)
         testSum++;
@@ -91,7 +91,7 @@ int main()
     G4b.supplyCount[4] = 0;
     G4b.supplyCount[5] = 0;
 
-    tester = isGameOver(&G4b)
+    tester = isGameOver(&G4b);
     printf("Unit Test 1, part 4.b (call function after 4 types of supply cards = 0)... \n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", tester);
     if(tester == 1)
     testSum++;
@@ -104,7 +104,7 @@ int main()
     G5.supplyCount[1] = 0;
     G5.supplyCount[2] = 0;
 
-    tester = isGameOver(&G5)
+    tester = isGameOver(&G5);
     printf("Unit Test 1, part 5 (call function after 2 types of supply cards = 0)... \n     expected result: isGameOver() == 0\n     actual result: isGameOver == %d\n", tester);
     if(tester == 0)
     testSum++;
