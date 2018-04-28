@@ -25,7 +25,7 @@ int main()
     int playerCount = 2;
     int initCheck;
     int tester;
-    struct gamestate G;
+    struct gameState G;
 
     initCheck = initializeGame(playerCount, k, seed, &G);
     assert(initCheck == 0);
@@ -34,5 +34,6 @@ int main()
     assert(tester == 0);            //isGameOver() should return 0 to show that the game should continue
 
    // G->supplyCount[province] = 0;
+   return 0;
 
 }

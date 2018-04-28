@@ -35,5 +35,12 @@ player: player.c interface.o
 
 all: playdom player 
 
+unit1.out: unittest1.c dominion.c rngs.c interface.c
+	echo "Result for running dominion tests:" > unittestresults.out
+	echo "unittest1.c:" >> unittestresults.out
+	gcc -o unittest1 dominion.c rngs.c interface.c unittest1.c $(CFLAGS)
+	unittest1 >> unittestresults.out
+	gcov dominion.c >> unittestresults.out
+
 clean:
 	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
