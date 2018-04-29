@@ -36,21 +36,21 @@ player: player.c interface.o
 all: playdom player 
 
 unittests.out: unittest1.c unittest2.c unittest3.c dominion.c rngs.c interface.c
-	echo "Result for running dominion tests:" > unittestresults.out
-	echo "unittest1.c:" >> unittestresults.out
-	gcc -o unittest1 dominion.c rngs.c interface.c unittest1.c $(CFLAGS)
+	echo "Dominion Unit Test Results:" > unittestresults.out
+	echo "Unit Test 1 isGameOver()(unittest1.c):" >> unittestresults.out
+	gcc dominion.c rngs.c interface.c unittest1.c -o unittest1 $(CFLAGS)
 	unittest1 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
-	echo "unittest2.c:" >> unittestresults.out
-	gcc -o unittest2 dominion.c rngs.c interface.c unittest2.c $(CFLAGS)
+	echo "Unit Test 2 newGame() (unittest2.c):" >> unittestresults.out
+	gcc dominion.c rngs.c interface.c unittest2.c -o unittest2 $(CFLAGS)
 	unittest2 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
-	echo "unittest3.c:" >> unittestresults.out
-	gcc -o unittest3 dominion.c rngs.c interface.c unittest3.c $(CFLAGS)
+	echo "Unit Test 3 compare() (unittest3.c):" >> unittestresults.out
+	gcc dominion.c rngs.c interface.c unittest3.c -o unittest3 $(CFLAGS)
 	unittest3 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
-	echo "unittest4.c:" >> unittestresults.out
-	gcc -o unittest4 dominion.c rngs.c interface.c unittest4.c $(CFLAGS)
+	echo "Unit Test 4 getCost() (unittest4.c):" >> unittestresults.out
+	gcc dominion.c rngs.c interface.c unittest4.c -o unittest4 $(CFLAGS)
 	unittest4 >> unittestresults.out
 	gcov dominion.c >> unittestresults.out
 
