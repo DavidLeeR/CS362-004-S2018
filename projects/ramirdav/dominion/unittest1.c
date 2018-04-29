@@ -17,7 +17,8 @@
 //1. isGameOver() should return 0 (continue game) if called directly after initializing game (ie. when supply cards and province card are full)
 //2. isGameOver() should return 1 (game over) if there are 0 province cards left
 //3. isGameOver() should return 1 (game over) if there are 3 empty supply piles
-//4. isGameOver() should return 1 (game over) if there are over 3 supply piles
+//4. isGameOver() should return 1 (game over) if there are 4 empty supply piles (ie. more than 3)
+//5. isGameOver() should return 1 (game over) if there are 5 empty supply piles (ie. more than 3)
 //5. isGameOver() should return 0 (game continues) if there are 2 empty supply piles
 int main() 
 {
@@ -25,11 +26,11 @@ int main()
     int k[10] = {adventurer, baron, council_room, feast, gardens, great_hall, mine, remodel, smithy, village};      //kingdom cards
     int playerCount = 2;
     int result;     //tracks return value of isGameOver()
-    struct gameState G1, G2, G3, G4a, G4b, G5;      //6 different gameStates for 6 test cases
+    struct gameState G1, G2, G3, G4, G5, G6;      //6 different gameStates for 6 test cases
     int testSum = 0;        //keeps track of passed test cases
     int testTotal = 6;      //number of total test cases
 
-
+    printf("\n\n\n******************Starting Unit Test 1: isGameOver() function******************\n");            
     /***************************************************************************************
      *PART 1: check if 0 is returned after inititializing game                             *
      ***************************************************************************************/
@@ -92,16 +93,16 @@ int main()
 
 
     /***************************************************************************************
-     *PART 4.a: check if 1 is returned when the number of 4 types of supply cards reaches 0*
+     *PART 4: check if 1 is returned when the number of 4 types of supply cards reaches 0*
      ***************************************************************************************/
-    initializeGame(playerCount, k, seed, &G4a);
+    initializeGame(playerCount, k, seed, &G4);
 
-    G4a.supplyCount[1] = 0;
-    G4a.supplyCount[2] = 0;
-    G4a.supplyCount[3] = 0;
-    G4a.supplyCount[4] = 0;
+    G4.supplyCount[1] = 0;
+    G4.supplyCount[2] = 0;
+    G4.supplyCount[3] = 0;
+    G4.supplyCount[4] = 0;
 
-    result = isGameOver(&G4a);
+    result = isGameOver(&G4);
 
     if(result == 1)
     {
@@ -116,17 +117,17 @@ int main()
 
 
     /****************************************************************************************
-     *PART 4.b: check if 1 is returned when the number of 5 types of supply cards reaches 0 *
+     *PART 5: check if 1 is returned when the number of 5 types of supply cards reaches 0 *
      ****************************************************************************************/
-    initializeGame(playerCount, k, seed, &G4b);
+    initializeGame(playerCount, k, seed, &G5);
     
-    G4b.supplyCount[1] = 0;
-    G4b.supplyCount[2] = 0;
-    G4b.supplyCount[3] = 0;
-    G4b.supplyCount[4] = 0;
-    G4b.supplyCount[5] = 0;
+    G5.supplyCount[1] = 0;
+    G5.supplyCount[2] = 0;
+    G5.supplyCount[3] = 0;
+    G5.supplyCount[4] = 0;
+    G5.supplyCount[5] = 0;
 
-    result = isGameOver(&G4b);
+    result = isGameOver(&G5);
 
     if(result == 1)
     {
@@ -140,14 +141,14 @@ int main()
 
 
     /***************************************************************************************
-     * PART 5: check if 0 is returned when the number of 2 types of supply cards reaches 0 *
+     * PART 6: check if 0 is returned when the number of 2 types of supply cards reaches 0 *
      ***************************************************************************************/
-    initializeGame(playerCount, k, seed, &G5);
+    initializeGame(playerCount, k, seed, &G6);
     
-    G5.supplyCount[1] = 0;
-    G5.supplyCount[2] = 0;
+    G6.supplyCount[1] = 0;
+    G6.supplyCount[2] = 0;
 
-    result = isGameOver(&G5);
+    result = isGameOver(&G6);
 
     if(result == 0)
     {
@@ -168,11 +169,11 @@ int main()
     if (testSum < testTotal)
     {
         int testFails = testTotal - testSum;
-        printf("Unit Test 1 failed %d test cases \n", testFails);
+        printf("Unit Test 1 failed %d out of 6 test cases \n", testFails);
     }
     //if all test cases passed, output success message
     else if (testSum == testTotal)
-        printf("Unit Test 1 passed all test cases \n");
+        printf("Unit Test 1 passed all 6 test cases \n");
 
 
 

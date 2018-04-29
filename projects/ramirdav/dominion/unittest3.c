@@ -40,7 +40,7 @@ int main()
     int testSum = 0;        //keeps track of passed test cases
     int testTotal = 3;      //number of total test cases
 
-
+    printf("\n\n\n******************Starting Unit Test 3: compare() function******************\n");    
     /***************************************************************************************
      *PART 1: check if -1 is returned (signifying a is less than b) when a is less than b  *
      ***************************************************************************************/
@@ -96,11 +96,11 @@ int main()
     if (testSum < testTotal)
     {
         int testFails = testTotal - testSum;
-        printf("Unit Test 3 failed %d test cases \n", testFails);
+        printf("Unit Test 3 failed %d out of 3 test cases \n", testFails);
     }
     //if all test cases passed, output success message
     else if (testSum == testTotal)
-        printf("Unit Test 3 passed all test cases \n");
+        printf("Unit Test 3 passed all 3 test cases \n");
 
   
     return 0;

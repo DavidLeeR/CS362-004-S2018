@@ -1,7 +1,7 @@
 /***********************************************************
  * Class: CS 362
  * Assignment: 3 (unit tests)
- * Unit Test 3: getCost() function
+ * Unit Test 4: getCost() function
  * Author: David Ramirez
  * Date: 4/29/18
  * *********************************************************/
@@ -52,7 +52,7 @@ int main()
     int testSum = 0;        //keeps track of passed test cases
     int testTotal = 27;      //number of total test cases
 
-
+    printf("\n\n\n******************Starting Unit Test 4: getCost() function******************\n");        
     /***************************************************************************************
      *PART 1: check if 0 is returned from getCost() when curse card value (0) is passed    *
      ***************************************************************************************/
@@ -500,11 +500,11 @@ int main()
     if (testSum < testTotal)
     {
         int testFails = testTotal - testSum;
-        printf("Unit Test 3 failed %d test cases \n", testFails);
+        printf("Unit Test 4 failed %d out of 27 test cases \n", testFails);
     }
     //if all test cases passed, output success message
     else if (testSum == testTotal)
-        printf("Unit Test 3 passed all test cases \n");
+        printf("Unit Test 4 passed all 27 test cases \n");
 
   
     return 0;
