@@ -77,12 +77,12 @@ int main()
 
     if(result == 2)
     {
-        printf("Unit Test 4, part 2 (getCost() should return 2 when curse card value (1) passed)... \n     PASS\n     expected result: getCost(1) == 2\n     actual result: getCost(1) == 2\n");  
+        printf("Unit Test 4, part 2 (getCost() should return 2 when estate card value (1) passed)... \n     PASS\n     expected result: getCost(1) == 2\n     actual result: getCost(1) == 2\n");  
         testSum++;
     }
     else if(result != 2)
     {
-        printf("Unit Test 4, part 2 (getCost() should return 2 when curse card value (1) passed)... \n     FAIL\n     expected result: getCost(1) == 2\n     actual result: getCost(1) == %d\n", result);  
+        printf("Unit Test 4, part 2 (getCost() should return 2 when estate card value (1) passed)... \n     FAIL\n     expected result: getCost(1) == 2\n     actual result: getCost(1) == %d\n", result);  
     }
 
 
@@ -94,12 +94,12 @@ int main()
 
     if(result == 5)
     {
-        printf("Unit Test 4, part 3 (getCost() should return 5 when curse card value (2) passed)... \n     PASS\n     expected result: getCost(2) == 5\n     actual result: getCost(2) == 5\n");  
+        printf("Unit Test 4, part 3 (getCost() should return 5 when duchy card value (2) passed)... \n     PASS\n     expected result: getCost(2) == 5\n     actual result: getCost(2) == 5\n");  
         testSum++;
     }
     else if(result != 5)
     {
-        printf("Unit Test 4, part 3 (getCost() should return 5 when curse card value (2) passed)... \n     FAIL\n     expected result: getCost(2) == 5\n     actual result: getCost(2) == %d\n", result);  
+        printf("Unit Test 4, part 3 (getCost() should return 5 when duchy card value (2) passed)... \n     FAIL\n     expected result: getCost(2) == 5\n     actual result: getCost(2) == %d\n", result);  
     }
     
 
@@ -111,12 +111,12 @@ int main()
 
     if(result == 8)
     {
-        printf("Unit Test 4, part 4 (getCost() should return 8 when curse card value (3) passed)... \n     PASS\n     expected result: getCost(3) == 8\n     actual result: getCost(1) == 8\n");  
+        printf("Unit Test 4, part 4 (getCost() should return 8 when province card value (3) passed)... \n     PASS\n     expected result: getCost(3) == 8\n     actual result: getCost(3) == 8\n");  
         testSum++;
     }
     else if(result != 8)
     {
-        printf("Unit Test 4, part 4 (getCost() should return 8 when curse card value (3) passed)... \n     FAIL\n     expected result: getCost(3) == 8\n     actual result: getCost(1) == %d\n", result);  
+        printf("Unit Test 4, part 4 (getCost() should return 8 when province card value (3) passed)... \n     FAIL\n     expected result: getCost(3) == 8\n     actual result: getCost(3) == %d\n", result);  
     }
 
 
@@ -179,12 +179,12 @@ int main()
 
     if(result == 6)
     {
-        printf("Unit Test 4, part 8 (getCost() should return 0 when copper card value (4) passed)... \n     PASS\n     expected result: getCost(4) == 0\n     actual result: getCost(4) == 0\n");  
+        printf("Unit Test 4, part 8 (getCost() should return 6 when adventurer card value (7) passed)... \n     PASS\n     expected result: getCost(7) == 6\n     actual result: getCost(7) == 6\n");  
         testSum++;
     }
     else if(result != 6)
     {
-        printf("Unit Test 4, part 8 (getCost() should return 0 when copper card value (4) passed)... \n     FAIL\n     expected result: getCost(4) == 0\n     actual result: getCost(4) == %d\n", result);  
+        printf("Unit Test 4, part 8 (getCost() should return 6 when adventurer card value (7) passed)... \n     FAIL\n     expected result: getCost(7) == 6\n     actual result: getCost(7) == %d\n", result);  
     }
 
 
@@ -243,12 +243,12 @@ int main()
 
     if(result == 5)
     {
-        printf("Unit Test 4, part 12 (getCost() should return 5 when copper card value (11) passed)... \n     PASS\n     expected result: getCost(11) == 5\n     actual result: getCost(11) == 5\n");  
+        printf("Unit Test 4, part 12 (getCost() should return 5 when mine card value (11) passed)... \n     PASS\n     expected result: getCost(11) == 5\n     actual result: getCost(11) == 5\n");  
         testSum++;
     }
     else if(result != 5)
     {
-        printf("Unit Test 4, part 12 (getCost() should return 5 when copper card value (11) passed)... \n     FAIL\n     expected result: getCost(11) == 5\n     actual result: getCost(11) == %d\n", result);  
+        printf("Unit Test 4, part 12 (getCost() should return 5 when mine card value (11) passed)... \n     FAIL\n     expected result: getCost(11) == 5\n     actual result: getCost(11) == %d\n", result);  
     }
 
 
@@ -339,12 +339,12 @@ int main()
 
     if(result == 5)
     {
-        printf("Unit Test 4, part 18 (getCost() should return 5 when great_hall card value (17) passed)... \n     PASS\n     expected result: getCost(17) == 5\n     actual result: getCost(17) == 5\n");  
+        printf("Unit Test 4, part 18 (getCost() should return 5 when minion card value (17) passed)... \n     PASS\n     expected result: getCost(17) == 5\n     actual result: getCost(17) == 5\n");  
         testSum++;
     }
     else if(result != 5)
     {
-        printf("Unit Test 4, part 18 (getCost() should return 5 when great_hall card value (17) passed)... \n     FAIL\n     expected result: getCost(17) == 5\n     actual result: getCost(17) == %d\n", result);  
+        printf("Unit Test 4, part 18 (getCost() should return 5 when minion card value (17) passed)... \n     FAIL\n     expected result: getCost(17) == 5\n     actual result: getCost(17) == %d\n", result);  
     }
 
 
