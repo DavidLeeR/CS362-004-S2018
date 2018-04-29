@@ -39,11 +39,11 @@ int main()
     initializeGame(playerCount, k, seed, &G);
     
     cardIndex = G.handCount[0];
-    G.hand[0][curHandCount] = smithy;   //add smithy to hand
+    G.hand[0][cardIndex] = smithy;   //add smithy to hand
     G.handCount[0]++;
     oldHandCount = G.handCount[0];
 
-    playCard(curHandCount,1, 1, 1, &G);
+    playCard(cardIndex,1, 1, 1, &G);
 
     newHandCount = G.handCount[0];
     cardsGained = newHandCount - oldHandCount;
