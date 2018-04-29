@@ -22,28 +22,41 @@ int main()
 {
     int seed = 1000;        //seed for random numbers
     int k[10] = {adventurer, baron, council_room, feast, gardens, great_hall, mine, remodel, smithy, village};      //kingdom cards
-    int playerCount = 2;
+    int playerCount = 3;
     int result;     //tracks return value of isGameOver()
     struct gameState G;      //6 different gameStates for 6 test cases
     int testSum = 0;        //keeps track of passed test cases
-    int testTotal = 6;      //number of total test cases
+    int testTotal = 1;      //number of total test cases
+    int cardIndex;
+    int oldHandCount;
+    int newHandCount;
+    int cardsGained;
 
     printf("\n\n\n******************Starting Card Test 1: Smithy card******************\n");            
     /***************************************************************************************
-     *PART 1: check if 0 is returned after inititializing game                             *
+     *PART 1: check if current player's hand increases by exactly 3 cards                  *
      ***************************************************************************************/
     initializeGame(playerCount, k, seed, &G);
+    
+    cardIndex = G.handCount[0];
+    G.hand[0][curHandCount] = smithy;   //add smithy to hand
+    G.handCount[0]++;
+    oldHandCount = G.handCount[0];
 
-    result = isGameOver(&G);
+    playCard(curHandCount,1, 1, 1, &G);
 
-    if(result == 0)
+    newHandCount = G.handCount[0];
+    cardsGained = newHandCount - oldHandCount;
+
+    //if exactly 3 cards were drawn after the smithy card was played, test passes
+    if(cardsGained == 3)
     {
-        printf("Unit Test 1, part 1 (isGameOver() should return 0 (continue) after game initialization)... \n     PASS\n     expected result: isGameOver() == 0\n     actual result: isGameOver() == %d\n", result);  
+        printf("Card Test 1, part 1 (player should gain 3 cards in their hand)... \n     PASS\n     expected result: cards gained == 3\n     actual result: cards gained == 3\n");  
         testSum++;
     }
-    else if(result != 0)
+    else if(cardsGained != 3)
     {
-        printf("Unit Test 1, part 1 (isGameOver() should return 0 (continue) after game initialization)... \n     FAIL\n     expected result: isGameOver() == 0\n     actual result: isGameOver() == %d\n", result);  
+        printf("Cards Test 1, part 1 (player should gain 3 cards in their hand)... \n     FAIL\n     expected result: cards gained == 3\n     actual result: cards gained == %d\n", cardsGained);  
     }
 
 
