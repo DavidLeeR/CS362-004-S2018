@@ -44,7 +44,7 @@ int main()
     /***************************************************************************************
      *PART 2: check if G1->playerNum == 0 and G1->playedCardCount == 0                     *
      ***************************************************************************************/
-    printf("*NOTE*: Unit Test 2: part 1 has passed. If Unit Test 2: part 2 fails, a segmentation fault will occur and will \nresult in a missing \"Unit Test2:part 2\" line directly after this line as well \nas a missing unit test summary.");
+    printf("*NOTE*:If Unit Test 2: part 2 fails, a segmentation fault will occur and will \nresult in a missing \"Unit Test2:part 2\" line directly after this line as well \nas a missing unit test summary.\n");
     if(G1->numPlayers == 0 && G1->playedCardCount == 0)
     {
         printf("Unit Test 2: part 2 (G1->playerNum and G1->playerCardCount should both equal 0 after call to newGame())... \n     PASS\n     expected result: playerNum == 0 && playerCardCount == 0\n     actual result: playerNum == 0 && playerCardCount ==0\n");
