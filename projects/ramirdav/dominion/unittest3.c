@@ -48,12 +48,12 @@ int main()
 
     if(result == -1)
     {
-        printf("Unit Test 3, part 1 (correct result (-1) for a < b)... \n     PASS\n     expected result: compare(0,100) == -1\n     actual result: compare(0,100) == -1\n");  
+        printf("Unit Test 3, part 1 (compare() should return -1 for a < b)... \n     PASS\n     expected result: compare(0,100) == -1\n     actual result: compare(0,100) == -1\n");  
         testSum++;
     }
     else if(result != -1)
     {
-        printf("Unit Test 3, part 1 (correct result (-1) for a < b)... \n     FAIL\n     expected result: compare(0,100) == -1\n     actual result: compare(0,100) == %d\n",result);          
+        printf("Unit Test 3, part 1 (compare should return -1 for for a < b)... \n     FAIL\n     expected result: compare(0,100) == -1\n     actual result: compare(0,100) == %d\n",result);          
     }
 
 
@@ -64,12 +64,12 @@ int main()
     
     if(result == 1)
     {
-        printf("Unit Test 3, part 2 (correct result (1) for a > b)... \n     PASS\n     expected result: compare(100,0) == 1\n     actual result: compare(100,0) == 1\n");          
+        printf("Unit Test 3, part 2 (compare should return 1 for a > b)... \n     PASS\n     expected result: compare(100,0) == 1\n     actual result: compare(100,0) == 1\n");          
         testSum++;
     }
     else if(result != 1)
     {
-        printf("Unit Test 3, part 2 (correct result (1) for a > b)... \n     FAIL\n     expected result: compare(100,0) == 1\n     actual result: compare(100,0) == %d\n", result); 
+        printf("Unit Test 3, part 2 (compare should return 1 for a > b)... \n     FAIL\n     expected result: compare(100,0) == 1\n     actual result: compare(100,0) == %d\n", result); 
     }
 
 
@@ -80,12 +80,12 @@ int main()
     
     if(result == 0)
     {
-        printf("Unit Test 3, part 2 (correct result (0) for a == b)... \n     PASS\n     expected result: compare(15,15) == 0\n     actual result: compare(15,15) == 0\n");          
+        printf("Unit Test 3, part 2 (compare should return 0 for a == b)... \n     PASS\n     expected result: compare(15,15) == 0\n     actual result: compare(15,15) == 0\n");          
         testSum++;
     }
     else if(result != 0)
     {
-        printf("Unit Test 3, part 2 (correct result (0) for a == b)... \n     FAIL\n     expected result: compare(15,15) == 0\n     actual result: compare(15,15) == %d\n", result); 
+        printf("Unit Test 3, part 2 (compare should return 0 for a == b)... \n     FAIL\n     expected result: compare(15,15) == 0\n     actual result: compare(15,15) == %d\n", result); 
     }
     
 

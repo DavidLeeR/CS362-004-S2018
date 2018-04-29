@@ -24,7 +24,7 @@ int main()
     int seed = 1000;        //seed for random numbers
     int k[10] = {adventurer, baron, council_room, feast, gardens, great_hall, mine, remodel, smithy, village};      //kingdom cards
     int playerCount = 2;
-    int tester;     //tracks return value of isGameOver()
+    int result;     //tracks return value of isGameOver()
     struct gameState G1, G2, G3, G4a, G4b, G5;      //6 different gameStates for 6 test cases
     int testSum = 0;        //keeps track of passed test cases
     int testTotal = 6;      //number of total test cases
@@ -35,16 +35,16 @@ int main()
      ***************************************************************************************/
     initializeGame(playerCount, k, seed, &G1);
 
-    tester = isGameOver(&G1);
+    result = isGameOver(&G1);
 
-    if(tester == 0)
+    if(result == 0)
     {
-        printf("Unit Test 1, part 1 (call function after initialization)... \n     PASS\n     expected result: isGameOver() == 0\n     actual result: isGameOver() == %d\n", tester);  
+        printf("Unit Test 1, part 1 (isGameOver() should return 0 (continue) after game initialization)... \n     PASS\n     expected result: isGameOver() == 0\n     actual result: isGameOver() == %d\n", result);  
         testSum++;
     }
-    else if(tester != 0)
+    else if(result != 0)
     {
-        printf("Unit Test 1, part 1 (call function after initialization)... \n     FAIL\n     expected result: isGameOver() == 0\n     actual result: isGameOver() == %d\n", tester);  
+        printf("Unit Test 1, part 1 (isGameOver() should return 0 (continue) after game initialization)... \n     FAIL\n     expected result: isGameOver() == 0\n     actual result: isGameOver() == %d\n", result);  
     }
 
 
@@ -56,16 +56,16 @@ int main()
 
     G2.supplyCount[province] = 0;
 
-    tester = isGameOver(&G2);
+    result = isGameOver(&G2);
 
-    if(tester == 1)
+    if(result == 1)
     {
-        printf("Unit Test 1, part 2 (call function after province cards = 0)... \n     PASS\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", tester);  
+        printf("Unit Test 1, part 2 (isGameOver() should return 1 (end) after province cards reach 0)... \n     PASS\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", result);  
         testSum++;
     }
-    else if(tester != 1)
+    else if(result != 1)
     {
-        printf("Unit Test 1, part 2 (call function after province cards = 0)... \n     FAIL\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", tester);  
+        printf("Unit Test 1, part 2 (isGameOver() should return 1 (end) after province cards reach 0)... \n     FAIL\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", result);  
     }
 
 
@@ -78,16 +78,16 @@ int main()
     G3.supplyCount[2] = 0;
     G3.supplyCount[3] = 0;
 
-    tester = isGameOver(&G3);
+    result = isGameOver(&G3);
 
-    if(tester == 1)
+    if(result == 1)
     {
-        printf("Unit Test 1, part 3 (call function after 3 types of supply cards = 0)... \n     PASS\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", tester);
+        printf("Unit Test 1, part 3 (isGameOver() should return 1 (end) after 3 types of supply cards reach 0)... \n     PASS\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", result);
         testSum++;
     }
-    else if(tester != 1)
+    else if(result != 1)
     {
-        printf("Unit Test 1, part 3 (call function after 3 types of supply cards = 0)... \n     FAIL\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", tester);
+        printf("Unit Test 1, part 3 (isGameOver() should return 1 (end) after 3 types of supply cards reach 0)... \n     FAIL\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", result);
     }
 
 
@@ -101,16 +101,16 @@ int main()
     G4a.supplyCount[3] = 0;
     G4a.supplyCount[4] = 0;
 
-    tester = isGameOver(&G4a);
+    result = isGameOver(&G4a);
 
-    if(tester == 1)
+    if(result == 1)
     {
-        printf("Unit Test 1, part 4.a (call function after 4 types of supply cards = 0)... \n     PASS\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", tester);
+        printf("Unit Test 1, part 4.a (call function after 4 types of supply cards = 0)... \n     PASS\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", result);
         testSum++;
     }
-    else if(tester != 1)
+    else if(result != 1)
     {
-        printf("Unit Test 1, part 4.a (call function after 4 types of supply cards = 0)... \n     FAIL\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", tester);
+        printf("Unit Test 1, part 4.a (call function after 4 types of supply cards = 0)... \n     FAIL\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", result);
     }
 
 
@@ -126,16 +126,16 @@ int main()
     G4b.supplyCount[4] = 0;
     G4b.supplyCount[5] = 0;
 
-    tester = isGameOver(&G4b);
+    result = isGameOver(&G4b);
 
-    if(tester == 1)
+    if(result == 1)
     {
-        printf("Unit Test 1, part 4.b (call function after 4 types of supply cards = 0)... \n     PASS\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", tester);
+        printf("Unit Test 1, part 4.b (call function after 4 types of supply cards = 0)... \n     PASS\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", result);
         testSum++;
     }
-    else if(tester != 1)
+    else if(result != 1)
     {
-        printf("Unit Test 1, part 4.b (call function after 4 types of supply cards = 0)... \n     FAIL\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", tester);
+        printf("Unit Test 1, part 4.b (call function after 4 types of supply cards = 0)... \n     FAIL\n     expected result: isGameOver() == 1\n     actual result: isGameOver == %d\n", result);
     }
 
 
@@ -147,16 +147,16 @@ int main()
     G5.supplyCount[1] = 0;
     G5.supplyCount[2] = 0;
 
-    tester = isGameOver(&G5);
+    result = isGameOver(&G5);
 
-    if(tester == 0)
+    if(result == 0)
     {
-        printf("Unit Test 1, part 5 (call function after 2 types of supply cards = 0)... \n     PASS\n     expected result: isGameOver() == 0\n     actual result: isGameOver == %d\n", tester);
+        printf("Unit Test 1, part 5 (call function after 2 types of supply cards = 0)... \n     PASS\n     expected result: isGameOver() == 0\n     actual result: isGameOver == %d\n", result);
         testSum++;
     }
-    else if(tester != 0)
+    else if(result != 0)
     {
-        printf("Unit Test 1, part 5 (call function after 2 types of supply cards = 0)... \n     FAIL\n     expected result: isGameOver() == 0\n     actual result: isGameOver == %d\n", tester);
+        printf("Unit Test 1, part 5 (call function after 2 types of supply cards = 0)... \n     FAIL\n     expected result: isGameOver() == 0\n     actual result: isGameOver == %d\n", result);
     }
 
 

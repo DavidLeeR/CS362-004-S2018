@@ -32,12 +32,12 @@ int main()
 
     if(G1 != NULL)
     {
-        printf("Unit Test 2: part 1 (check if new memory address for G1 after call to newGame() is not NULL)... \n     PASS\n     expected result: G1 != NULL\n     actual result: G1 != NULL\n");
+        printf("Unit Test 2: part 1 (G1 should not equal NULL after call to newGame())... \n     PASS\n     expected result: G1 != NULL\n     actual result: G1 != NULL\n");
 	    testSum++;
     }
     else if(G1 == NULL)
     {
-        printf("Unit Test 2: part 1(check if new memory address for G1 after call to newGame() is not NULL)... \n     FAIL\n     expected result: G1 != NULL\n     actual result: G1 == NULL\n");
+        printf("Unit Test 2: part 1(G1 should not equal NULL after call to newGame())... \n     FAIL\n     expected result: G1 != NULL\n     actual result: G1 == NULL\n");
     }
 
 
@@ -47,7 +47,7 @@ int main()
     printf("*NOTE*: If Unit Test 2: part 2 fails, a segmentation fault will occur and will \nresult in a missing \"Unit Test2:part 2\" line directly after this line.\n");
     if(G1->numPlayers == 0 && G1->playedCardCount == 0)
     {
-        printf("Unit Test 2: part 2 (check if G1->playerNum and G1->playerCardCount both equal 0)... \n     PASS\n     expected result: playerNum == 0 && playerCardCount == 0\n     actual result: playerNum == 0 && playerCardCount ==0\n");
+        printf("Unit Test 2: part 2 (G1->playerNum and G1->playerCardCount should both equal 0 after call to newGame())... \n     PASS\n     expected result: playerNum == 0 && playerCardCount == 0\n     actual result: playerNum == 0 && playerCardCount ==0\n");
         testSum++;
     }
     else
