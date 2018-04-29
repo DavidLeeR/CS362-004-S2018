@@ -28,37 +28,72 @@ int main()
     int testSum = 0;        //keeps track of passed test cases
     int testTotal = 1;      //number of total test cases
     int cardIndex;
+    //variables for test part 1
     int oldHandCount;
     int newHandCount;
     int cardsGained;
+    //variables for test part 2
+    int oldDeckCount;
+    int newDeckCount;
+    int cardsRemoved;
+    //variables for test part 3
+    int oldHandCount3;
+    int newHandCount3;
+    //variables for test part 4
+    int oldHandCount4;
+    int newHandCount4;
 
-    printf("\n\n\n******************Starting Card Test 1: Smithy card******************\n");            
-    /***************************************************************************************
-     *PART 1: check if current player's hand increases by exactly 3 cards                  *
-     ***************************************************************************************/
-    initializeGame(playerCount, k, seed, &G);
-    
-    cardIndex = G.handCount[0];
-    G.hand[0][cardIndex] = smithy;   //add smithy to hand
+    printf("\n\n\n******************Starting Card Test 1: Smithy card******************\n");   
+    /*******************************************************************************************************************
+     *SETUP: initalize game, give player 1 Smithy card, and record each player's hand size before using Smithy card    *
+     *******************************************************************************************************************/     
+    initializeGame(playerCount, k, seed, &G);    
+
+    cardIndex = G.handCount[0];      //save size of hand as index of smithy card
+
+    G.hand[0][cardIndex] = smithy;   //add smithy to hand of player 1
     G.handCount[0]++;
-    oldHandCount = G.handCount[0];
 
+    oldHandCount = G.handCount[0];
+    oldDeckCount = G.deckCount[0];
+
+    /***************************************************************************************
+     *PART 1: check if player 1's hand increases by exactly 3 cards after playing Smithy   *
+     ***************************************************************************************/
     playCard(cardIndex,1, 1, 1, &G);
 
     newHandCount = G.handCount[0];
     cardsGained = newHandCount - oldHandCount;
 
-    //if exactly 3 cards were drawn after the smithy card was played, test passes
+    //if exactly 3 cards were drawn to player 1's hand after the smithy card was played, test passes
     if(cardsGained == 3)
     {
-        printf("Card Test 1, part 1 (player should gain 3 cards in their hand)... \n     PASS\n     expected result: cards gained == 3\n     actual result: cards gained == 3\n");  
+        printf("Card Test 1, part 1 (player 1 should gain 3 cards in their hand)... \n     PASS\n     expected result: cards gained == 3\n     actual result: cards gained == 3\n");  
         testSum++;
     }
     else if(cardsGained != 3)
     {
-        printf("Cards Test 1, part 1 (player should gain 3 cards in their hand)... \n     FAIL\n     expected result: cards gained == 3\n     actual result: cards gained == %d\n", cardsGained);  
+        printf("Cards Test 1, part 1 (player 1 should gain 3 cards in their hand)... \n     FAIL\n     expected result: cards gained == 3\n     actual result: cards gained == %d\n", cardsGained);  
     }
 
+
+    /***************************************************************************************
+     *PART 2: check if the 3 cards drawn in PART 1 were from player 1's deck               *
+     ***************************************************************************************/
+    newDeckCount = G.deckCount[0];
+    cardsRemoved = newDeckCount - oldDeckCount;
+
+
+    //if exactly 3 cards were removed from player 1's deck after the smithy card was played, test passes
+    if(cardsRemoved == 3)
+    {
+        printf("Card Test 1, part 2 (player 1 should have 3 cards removed from deck)... \n     PASS\n     expected result: cards removed == 3\n     actual result: cards removed == 3\n");  
+        testSum++;
+    }
+    else if(cardsGained != 3)
+    {
+        printf("Cards Test 1, part 2 (player 1 should have 3 cards removed from deck)... \n     FAIL\n     expected result: cards removed == 3\n     actual result: cards removed == %d\n", cardsRemoved);  
+    }
 
 
     /***************************************************************************************
