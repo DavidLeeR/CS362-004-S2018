@@ -151,11 +151,25 @@ int main()
     newVictoryCount += G.supplyCount[duchy];
     newVictoryCount += G.supplyCount[province];
 
+    int m = 0;
+    for(m; m < G.handCount[0]; m++)
+    {
+        if(G.hand[0][m] == estate || G.hand[0][m] == duchy || G.hand[0][m] == province)
+            newVictoryCount ++;
+    }
+
     //for each kingdom card, add the number in supply to the new kingdom card count (ie. after playing Smithy card)
     int i;
     for(i = adventurer; i <= great_hall; i++)
     {
         newKingdomCount += G.supplyCount[i];
+    }
+
+    int n = 0;
+    for(n; n < G.handCount[0]; n++)
+    {
+        if(G.hand[0][n] >= adventurer && G.hand[0][n] <= great_hall)
+            newVictoryCount ++;
     }
 
     victoryChange = newVictoryCount - oldVictoryCount;
