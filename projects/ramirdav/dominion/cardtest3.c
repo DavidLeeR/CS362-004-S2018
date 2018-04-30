@@ -26,7 +26,7 @@ int main()
     int playerCount = 3;
     struct gameState G;      
     int testSum = 0;        //keeps track of passed test cases
-    int testTotal = 4;      //number of total test cases
+    int testTotal = 5;      //number of total test cases
     int cardIndex;
     //variables for test part 1
     int oldHandCount;
@@ -38,7 +38,7 @@ int main()
     int oldDeckCount;
     int newDeckCount;
     int cardsRemoved;
-
+    //variables for test part 4
     int oldDeckCount2;
     int newDeckCount2;
     int oldHandCount2;
@@ -51,7 +51,7 @@ int main()
     int cardsGained3;
     int cardsRemoved2;
     int cardsRemoved3;
-    //variables for test part 4
+    //variables for test part 5
     int oldVictoryCount = 36;
     int newVictoryCount = 0;
     int victoryChange;
@@ -91,12 +91,12 @@ int main()
     //note*: this is 0 to account for discarding great_hall
     if(cardsGained == 0)
     {
-        printf("Card Test 1, part 1 (player 1 should gain 1 cards in their hand)... \n     PASS\n     expected result: cards gained == 1\n     actual result: cards gained == 1\n");  
+        printf("Card Test 3, part 1 (player 1 should gain 1 cards in their hand)... \n     PASS\n     expected result: cards gained == 1\n     actual result: cards gained == 1\n");  
         testSum++;
     }
     else if(cardsGained != 0)
     {
-        printf("Cards Test 1, part 1 (player 1 should gain 3 cards in their hand)... \n     FAIL\n     expected result: cards gained == 1\n     actual result: cards gained == %d\n", cardsGained+1);  
+        printf("Cards Test 3, part 1 (player 1 should gain 1 cards in their hand)... \n     FAIL\n     expected result: cards gained == 1\n     actual result: cards gained == %d\n", cardsGained+1);  
     }
 
 
@@ -108,12 +108,12 @@ int main()
     //if exactly 1 action point was added to player 1 after the great_hall card was played, test passes
     if(actionPoints == 1)
     {
-        printf("Card Test 1, part 2 (player 1 should gain 1 action point)... \n     PASS\n     expected result: action points gained == 1\n     actual result: action points gained == 1\n");  
+        printf("Card Test 3, part 2 (player 1 should gain 1 action point)... \n     PASS\n     expected result: action points gained == 1\n     actual result: action points gained == 1\n");  
         testSum++;
     }
     else
     {
-        printf("Cards Test 1, part 2 (player 1 should gain 1 action point)... \n     FAIL\n     expected result: action points gained == 1\n     actual result: action points gained == %d\n", actionPoints);  
+        printf("Cards Test 3, part 2 (player 1 should gain 1 action point)... \n     FAIL\n     expected result: action points gained == 1\n     actual result: action points gained == %d\n", actionPoints);  
     }
 
     /***************************************************************************************
@@ -122,16 +122,15 @@ int main()
     newDeckCount = G.deckCount[0];
     cardsRemoved = oldDeckCount - newDeckCount;     //number of cards removed from player 1's deck
 
-
     //if exactly 1 card was removed from player 1's deck after the great_hall card was played, test passes
     if(cardsRemoved == 1)
     {
-        printf("Card Test 1, part 2 (player 1 should have 1 card removed from deck)... \n     PASS\n     expected result: cards removed == 1\n     actual result: cards removed == 1\n");  
+        printf("Card Test 3, part 3 (player 1 should have 1 card removed from deck)... \n     PASS\n     expected result: cards removed == 1\n     actual result: cards removed == 1\n");  
         testSum++;
     }
     else if(cardsGained != 1)
     {
-        printf("Cards Test 1, part 2 (player 1 should have 1 card removed from deck)... \n     FAIL\n     expected result: cards removed == 1\n     actual result: cards removed == %d\n", cardsRemoved);  
+        printf("Cards Test 3, part 3 (player 1 should have 1 card removed from deck)... \n     FAIL\n     expected result: cards removed == 1\n     actual result: cards removed == %d\n", cardsRemoved);  
     }
 
 
@@ -166,12 +165,12 @@ int main()
     /***************************************************************************************
      *PART 5: check if there are no state changes to victory and kingdom cards             *
      ***************************************************************************************/
-    //count all victory cards after player 1 plays Smithy card
+    //count all victory cards after player 1 plays great_hall card
     newVictoryCount += G.supplyCount[estate];
     newVictoryCount += G.supplyCount[duchy];
     newVictoryCount += G.supplyCount[province];
 
-    //for each kingdom card, add the number in supply to the new kingdom card count (ie. after playing Smithy card)
+    //for each kingdom card, add the number in supply to the new kingdom card count (ie. after playing great_hall card)
     int i;
     for(i = adventurer; i <= great_hall; i++)
     {

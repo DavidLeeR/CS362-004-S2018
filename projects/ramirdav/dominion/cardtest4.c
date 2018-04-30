@@ -26,7 +26,7 @@ int main()
     int playerCount = 3;
     struct gameState G;      
     int testSum = 0;        //keeps track of passed test cases
-    int testTotal = 4;      //number of total test cases
+    int testTotal = 5;      //number of total test cases
     int cardIndex;
     //variables for test part 1
     int oldHandCount;
@@ -105,7 +105,7 @@ int main()
      ***************************************************************************************/
     actionPoints = G.numActions;
 
-    //if exactly 1 action point was added to player 1 after the great_hall card was played, test passes
+    //if exactly 1 action point was added to player 1 after the village card was played, test passes
     if(actionPoints == 2)
     {
         printf("Card Test 4, part 2 (player 1 should gain 2 action points)... \n     PASS\n     expected result: action points gained == 2\n     actual result: action points gained == 2\n");  
@@ -123,15 +123,15 @@ int main()
     cardsRemoved = oldDeckCount - newDeckCount;     //number of cards removed from player 1's deck
 
 
-    //if exactly 1 card was removed from player 1's deck after the great_hall card was played, test passes
+    //if exactly 1 card was removed from player 1's deck after the village card was played, test passes
     if(cardsRemoved == 1)
     {
-        printf("Card Test 1, part 2 (player 1 should have 1 card removed from deck)... \n     PASS\n     expected result: cards removed == 1\n     actual result: cards removed == 1\n");  
+        printf("Card Test 4, part 3 (player 1 should have 1 card removed from deck)... \n     PASS\n     expected result: cards removed == 1\n     actual result: cards removed == 1\n");  
         testSum++;
     }
     else if(cardsGained != 1)
     {
-        printf("Cards Test 1, part 2 (player 1 should have 1 card removed from deck)... \n     FAIL\n     expected result: cards removed == 1\n     actual result: cards removed == %d\n", cardsRemoved);  
+        printf("Cards Test 4, part 3 (player 1 should have 1 card removed from deck)... \n     FAIL\n     expected result: cards removed == 1\n     actual result: cards removed == %d\n", cardsRemoved);  
     }
 
 
@@ -153,12 +153,12 @@ int main()
     //if there are no changes to player 2 or player 3's deck and hand then test passes
     if(cardsGained2 == 0 && cardsRemoved2 == 0 && cardsGained3 == 0 && cardsRemoved3 == 0)
     {
-        printf("Card Test 3, part 4 (player 2 and 3 should have no deck/hand change)... \n     PASS\n     expected result: p1 gained/removed == 0, p2 gained/removed == 0\n     actual result: p2 gained/removed == 0, p3 gained/removed == 0\n");  
+        printf("Card Test 4, part 4 (player 2 and 3 should have no deck/hand change)... \n     PASS\n     expected result: p1 gained/removed == 0, p2 gained/removed == 0\n     actual result: p2 gained/removed == 0, p3 gained/removed == 0\n");  
         testSum++;
     }
     else
     {
-        printf("Cards Test 3, part 4 (player 2 and 3 should have no deck/hand change)... \n     FAIL\n     expected result: p1 gained/removed == 0, p2 gained/removed == 0\n     actual result: p2 gained == %d, p2 removed == %d, p3 gained == %d, p3 removed == %d\n", cardsGained2, cardsRemoved2, cardsGained3, cardsRemoved3);  
+        printf("Cards Test 4, part 4 (player 2 and 3 should have no deck/hand change)... \n     FAIL\n     expected result: p1 gained/removed == 0, p2 gained/removed == 0\n     actual result: p2 gained == %d, p2 removed == %d, p3 gained == %d, p3 removed == %d\n", cardsGained2, cardsRemoved2, cardsGained3, cardsRemoved3);  
     }
 
 
@@ -171,7 +171,7 @@ int main()
     newVictoryCount += G.supplyCount[duchy];
     newVictoryCount += G.supplyCount[province];
 
-    //for each kingdom card, add the number in supply to the new kingdom card count (ie. after playing Smithy card)
+    //for each kingdom card, add the number in supply to the new kingdom card count (ie. after playing Village card)
     int i;
     for(i = adventurer; i <= great_hall; i++)
     {
@@ -184,12 +184,12 @@ int main()
     //if there are no changes to the victory card and kingdom card supply then test passes
     if(victoryChange == 0 && kingdomChange == 0)
     {
-        printf("Card Test 3, part 5 (there should be no change in victory/kingdom card supply)... \n     PASS\n     expected result: victory/kingdom card supply change == 0\n     actual result: victory/kingdom card supply change == 0\n");  
+        printf("Card Test 4, part 5 (there should be no change in victory/kingdom card supply)... \n     PASS\n     expected result: victory/kingdom card supply change == 0\n     actual result: victory/kingdom card supply change == 0\n");  
         testSum++;
     }
     else
     {
-        printf("Cards Test 3, part 5 (there should be no change in victory/kingdom card supply)... \n     FAIL\n     expected result: victory/kingdom card supply change == 0\n     actual result: victory card supply change == %d, kingdom card supply change == %d\n", victoryChange, kingdomChange);  
+        printf("Cards Test 4, part 5 (there should be no change in victory/kingdom card supply)... \n     FAIL\n     expected result: victory/kingdom card supply change == 0\n     actual result: victory card supply change == %d, kingdom card supply change == %d\n", victoryChange, kingdomChange);  
     }
 
 

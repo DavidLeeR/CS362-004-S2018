@@ -17,7 +17,7 @@
 //1. exactly 2 treasure cards should be added to player 1's hand after playing Adventurer card
 //2. the discarded cards and the 2 treasure cards should come from player 1's supply pile
 //3. there should be no state change for other players
-//4.
+//4. check if no state change to kingdom/victory card piles
 int main() 
 {
     
@@ -54,13 +54,20 @@ int main()
     int cardsGained3;
     int cardsRemoved2;
     int cardsRemoved3;
+    //variables for test part 4
+    int oldVictoryCount = 36;
+    int newVictoryCount = 0;
+    int victoryChange;
+    int oldKingdomCount = 104;
+    int newKingdomCount = 0;
+    int kingdomChange;
  
 
 
     printf("\n\n\n******************Starting Card Test 2: Adventurer card******************\n");   
-    /*******************************************************************************************************************
+    /***************************************************************************************************************************
      *SETUP: initalize game, give player 1 Adventurer card, and record each player's hand size before using Adventurer card    *
-     *******************************************************************************************************************/     
+     ***************************************************************************************************************************/     
     initializeGame(playerCount, k, seed, &G);    
 
     cardIndex = G.handCount[0];      //save size of hand as index of adventurer card
@@ -158,6 +165,36 @@ int main()
     else
     {
         printf("Cards Test 1, part 3 (player 2 and 3 should have no deck/hand change)... \n     FAIL\n     expected result: p2 gained/removed == 0, p3 gained/removed == 0\n     actual result: p2 gained == %d, p2 removed == %d, p3 gained == %d, p3 removed == %d\n", cardsGained2, cardsRemoved2, cardsGained3, cardsRemoved3);  
+    }
+
+
+    /***************************************************************************************
+     *PART 4: check if there are no state changes to victory and kingdom cards             *
+     ***************************************************************************************/
+    //count all victory cards after player 1 plays great_hall card
+    newVictoryCount += G.supplyCount[estate];
+    newVictoryCount += G.supplyCount[duchy];
+    newVictoryCount += G.supplyCount[province];
+
+    //for each kingdom card, add the number in supply to the new kingdom card count (ie. after playing great_hall card)
+    int i;
+    for(i = adventurer; i <= great_hall; i++)
+    {
+        newKingdomCount += G.supplyCount[i];
+    }
+
+    victoryChange = newVictoryCount - oldVictoryCount;
+    kingdomChange = newKingdomCount - oldKingdomCount;
+
+    //if there are no changes to the victory card and kingdom card supply then test passes
+    if(victoryChange == 0 && kingdomChange == 0)
+    {
+        printf("Card Test 3, part 4 (there should be no change in victory/kingdom card supply)... \n     PASS\n     expected result: victory/kingdom card supply change == 0\n     actual result: victory/kingdom card supply change == 0\n");  
+        testSum++;
+    }
+    else
+    {
+        printf("Cards Test 3, part 4 (there should be no change in victory/kingdom card supply)... \n     FAIL\n     expected result: victory/kingdom card supply change == 0\n     actual result: victory card supply change == %d, kingdom card supply change == %d\n", victoryChange, kingdomChange);  
     }
 
 
