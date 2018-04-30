@@ -133,7 +133,7 @@ int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 
 int smithyFunction(int currentPlayerT, struct gameState *stateT, int handPosT);
 
-int adventurerFunction(int *drawnTreasureT, struct gameState *stateT, int currentPlayerT, int *cardDrawnT,int *tempHandT[MAX_HAND],int *zT);
+int adventurerFunction(struct gameState *state, int currentPlayer);
 
 int villageFunction(int currentPlayerT, struct gameState *stateT, int handPosT);
 
