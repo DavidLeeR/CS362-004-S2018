@@ -119,7 +119,15 @@ int main()
     /***************************************************************************************
      *PART 3: check if there are no state changes to other players deck                    *
      ***************************************************************************************/
+    newHandCount2 = G.handCount[1];
+    newDeckCount2 = G.deckCount[1];
+    newHandCount3 = G.handCount[2];
+    newDeckCount3 = G.deckCount[2];
 
+    cardsGained2 = newHandCount2 - oldHandCount2;     //number of cards gained to player 2's hand
+    cardsRemoved2 = oldDeckCount2 - newDeckCount2;    //number of cards removed from player 2's deck
+    cardsGained3 = newHandCount3 - oldHandCount3;     //number of cards gained to player 3's hand
+    cardsRemoved3 = oldDeckCount3 - newDeckCount3;    //number of cards removed from player 3's deck
     
 
 
