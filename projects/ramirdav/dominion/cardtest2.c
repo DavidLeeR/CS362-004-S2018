@@ -17,7 +17,7 @@
 //1. exactly 2 treasure cards should be added to player 1's hand after playing Adventurer card
 //2. the discarded cards and the 2 treasure cards should come from player 1's supply pile
 //3. there should be no state change for other players
-//4. 
+//4.
 int main() 
 {
     
