@@ -60,7 +60,7 @@ int main()
     int kingdomChange;
 
 
-    printf("\n\n\n******************Starting Card Test 1: Smithy card******************\n");   
+    printf("\n\n\n******************Starting Card Test 3: Great Hall card******************\n");   
     /***************************************************************************************************************************
      *SETUP: initalize game, give player 1 great_hall card, and record each player's hand size before using great_hall card    *
      ***************************************************************************************************************************/     

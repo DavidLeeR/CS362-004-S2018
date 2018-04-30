@@ -18,16 +18,18 @@
 //2. the discarded cards and the 2 treasure cards should come from player 1's supply pile
 //3. there should be no state change for other players
 //4. check if no state change to kingdom/victory card piles
+//5. deck should be shuffled if is 0 when using Adventurer
 int main() 
 {
     
     int seed = 1000;        //seed for random numbers
     int k[10] = {adventurer, baron, council_room, feast, gardens, great_hall, mine, remodel, smithy, village};      //kingdom cards
     int playerCount = 3;
-    struct gameState G;      
+    struct gameState G, G2;      
     int testSum = 0;        //keeps track of passed test cases
-    int testTotal = 4;      //number of total test cases
+    int testTotal = 5;      //number of total test cases
     int cardIndex;
+    int cardIndex2;
     //variables for test part 1
     int oldTreasureCount = 0;
     int newTreasureCount = 0;
@@ -61,6 +63,9 @@ int main()
     int oldKingdomCount = 104;
     int newKingdomCount = 0;
     int kingdomChange;
+    //variables for test part 5
+    int startingCount;
+    int afterShuffleCount;
  
 
 
@@ -69,11 +74,16 @@ int main()
      *SETUP: initalize game, give player 1 Adventurer card, and record each player's hand size before using Adventurer card    *
      ***************************************************************************************************************************/     
     initializeGame(playerCount, k, seed, &G);    
+    initializeGame(playerCount, k, seed, &G2);  
 
     cardIndex = G.handCount[0];      //save size of hand as index of adventurer card
+    cardIndex2 = G2.handCount[0];
 
     G.hand[0][cardIndex] = adventurer;   //add adventurer card to hand of player 1
     G.handCount[0]++;
+
+    G2.hand[0][cardIndex] = adventurer;   //add adventurer card to hand of player 1
+    G2.handCount[0]++;
 
     //record hand and deck counts for all players before player 1 plays Adventurer card
     oldHandCount = G.handCount[0];      
@@ -198,7 +208,36 @@ int main()
     }
 
 
+    /***************************************************************************************
+     *PART 5: check if cards shuffle back into deck if deck at 0 when adventurer card used                   *
+     ***************************************************************************************/
+    startingCount = G2.deckCount[0];
 
+    //transfer all deck cards to discard pile
+    int g = 0;
+    for(g; g < G2.deckCount[0]; g++)
+    {
+        G2.discard[0][g] = G2.deck[0][g];
+        G2.deck[0][g] = -1;
+        G2.discardCount[0]++;
+    }
+
+    G2.deckCount[0] = 0;     //set deck to empty
+
+    playCard(cardIndex2,-1, -1, -1, &G2);
+
+    afterShuffleCount = G2.deckCount[0];
+
+    //if there are no changes to the victory card and kingdom card supply then test passes
+    if(startingCount == afterShuffleCount)
+    {
+        printf("Card Test 2, part 5 (deck count before shuffle should equal deck count after shuffle)... \n     PASS\n     expected result: deck count before shuffle == deck count after shuffle\n     actual result: deck count before shuffle == deck count after shuffle\n");  
+        testSum++;
+    }
+    else
+    {
+        printf("Cards Test 2, part 5 (deck count before shuffle should equal deck count after shuffle)... \n     FAIL\n     expected result: deck count before shuffle == deck count after shuffle\n     actual result: deck count before shuffle == %d, deck count after shuffle == %d\n", startingCount, afterShuffleCount);  
+    }
 
 
     /***************************************************************************************
@@ -208,11 +247,11 @@ int main()
     if (testSum < testTotal)
     {
         int testFails = testTotal - testSum;
-        printf("Card Test 2 failed %d out of 4 test cases \n", testFails);
+        printf("Card Test 2 failed %d out of 5 test cases \n", testFails);
     }
     //if all test cases passed, output success message
     else if (testSum == testTotal)
-        printf("Card Test 2 passed all 4 test cases \n");
+        printf("Card Test 2 passed all 5 test cases \n");
 
 
 
