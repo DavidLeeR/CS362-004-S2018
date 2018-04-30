@@ -103,7 +103,7 @@ int main()
      /**************************************************************************************
      *PART 2: check player 1 gained 1 action point after playing great_hall                *
      ***************************************************************************************/
-    actionPoints = G.numActions[0];
+    actionPoints = G.numActions;
 
     //if exactly 1 action point was added to player 1 after the great_hall card was played, test passes
     if(actionPoints == 1)
