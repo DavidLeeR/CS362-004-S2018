@@ -23,10 +23,9 @@ int main()
     int seed = 1000;        //seed for random numbers
     int k[10] = {adventurer, baron, council_room, feast, gardens, great_hall, mine, remodel, smithy, village};      //kingdom cards
     int playerCount = 3;
-    int result;     //tracks return value of isGameOver()
-    struct gameState G;      //6 different gameStates for 6 test cases
+    struct gameState G;      
     int testSum = 0;        //keeps track of passed test cases
-    int testTotal = 3;      //number of total test cases
+    int testTotal = 4;      //number of total test cases
     int cardIndex;
     //variables for test part 1
     int oldHandCount;
@@ -182,11 +181,11 @@ int main()
     if (testSum < testTotal)
     {
         int testFails = testTotal - testSum;
-        printf("Unit Test 1 failed %d out of 6 test cases \n", testFails);
+        printf("Unit Test 1 failed %d out of 4 test cases \n", testFails);
     }
     //if all test cases passed, output success message
     else if (testSum == testTotal)
-        printf("Unit Test 1 passed all 6 test cases \n");
+        printf("Unit Test 1 passed all 4 test cases \n");
 
 
 
