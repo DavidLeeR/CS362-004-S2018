@@ -1,7 +1,7 @@
 /***********************************************************
  * Class: CS 362
  * Assignment: 3 (card tests)
- * Card Test 3: Great Hall card
+ * Card Test 4: Village card
  * Author: David Ramirez
  * Date: 4/29/18
  * *********************************************************/
@@ -13,9 +13,9 @@
 #include <assert.h>
 #include "rngs.h"
 
-//Card Test 3: Great Hall card
-//1. exactly 1 card should be drawn into player 1's hand after playing great_hall card
-//2. player 1 should gain exactly 1 action point after playing great hall card
+//Card Test 4: Village card
+//1. exactly 1 card should be drawn into player 1's hand after playing village card
+//2. player 1 should gain exactly 2 action points after playing village card
 //3. the drawn card should come from player 1's supply pile
 //4. there should be no state change for other players
 //5. there should be no state change for victory/kingdom card piles
@@ -60,18 +60,18 @@ int main()
     int kingdomChange;
 
 
-    printf("\n\n\n******************Starting Card Test 1: Smithy card******************\n");   
+    printf("\n\n\n******************Starting Card Test 4: Village card******************\n");   
     /***************************************************************************************************************************
-     *SETUP: initalize game, give player 1 great_hall card, and record each player's hand size before using great_hall card    *
+     *SETUP: initalize game, give player 1 village card, and record each player's hand size before using village card          *
      ***************************************************************************************************************************/     
     initializeGame(playerCount, k, seed, &G);    
 
-    cardIndex = G.handCount[0];      //save size of hand as index of great_hall card
+    cardIndex = G.handCount[0];      //save size of hand as index of village card
 
-    G.hand[0][cardIndex] = great_hall;   //add great_hall to hand of player 1
+    G.hand[0][cardIndex] = village;   //add village to hand of player 1
     G.handCount[0]++;
 
-    //record hand and deck counts for all players before player 1 plays great_hall card
+    //record hand and deck counts for all players before player 1 plays village card
     oldHandCount = G.handCount[0];      
     oldDeckCount = G.deckCount[0];
     oldHandCount2 = G.handCount[1];
@@ -80,40 +80,40 @@ int main()
     oldDeckCount3 = G.deckCount[2];
 
     /**************************************************************************************************************************************
-     *PART 1: check if player 1's hand increases by exactly 1 cards after playing great_hall (accounting for great_hall being discarded)  *
+     *PART 1: check if player 1's hand increases by exactly 1 cards after playing village (accounting for village being discarded)        *
      **************************************************************************************************************************************/
     playCard(cardIndex,-1, -1, -1, &G);
 
     newHandCount = G.handCount[0];
     cardsGained = newHandCount - oldHandCount;
 
-    //if exactly 1 cards were drawn to player 1's hand after the great_hall card was played, test passes
-    //note*: this is 0 to account for discarding great_hall
+    //if exactly 1 card was drawn to player 1's hand after the village card was played, test passes
+    //note*: this is 0 to account for discarding village
     if(cardsGained == 0)
     {
-        printf("Card Test 1, part 1 (player 1 should gain 1 cards in their hand)... \n     PASS\n     expected result: cards gained == 1\n     actual result: cards gained == 1\n");  
+        printf("Card Test 4, part 1 (player 1 should gain 1 card in their hand)... \n     PASS\n     expected result: cards gained == 1\n     actual result: cards gained == 1\n");  
         testSum++;
     }
     else if(cardsGained != 0)
     {
-        printf("Cards Test 1, part 1 (player 1 should gain 3 cards in their hand)... \n     FAIL\n     expected result: cards gained == 1\n     actual result: cards gained == %d\n", cardsGained+1);  
+        printf("Cards Test 4, part 1 (player 1 should gain 1 card in their hand)... \n     FAIL\n     expected result: cards gained == 1\n     actual result: cards gained == %d\n", cardsGained+1);  
     }
 
 
      /**************************************************************************************
-     *PART 2: check player 1 gained 1 action point after playing great_hall                *
+     *PART 2: check player 1 gained 2 action points after playing village                  *
      ***************************************************************************************/
     actionPoints = G.numActions;
 
     //if exactly 1 action point was added to player 1 after the great_hall card was played, test passes
-    if(actionPoints == 1)
+    if(actionPoints == 2)
     {
-        printf("Card Test 1, part 2 (player 1 should gain 1 action point)... \n     PASS\n     expected result: action points gained == 1\n     actual result: action points gained == 1\n");  
+        printf("Card Test 4, part 2 (player 1 should gain 2 action points)... \n     PASS\n     expected result: action points gained == 2\n     actual result: action points gained == 2\n");  
         testSum++;
     }
     else
     {
-        printf("Cards Test 1, part 2 (player 1 should gain 1 action point)... \n     FAIL\n     expected result: action points gained == 1\n     actual result: action points gained == %d\n", actionPoints);  
+        printf("Cards Test 4, part 2 (player 1 should gain 2 action points)... \n     FAIL\n     expected result: action points gained == 2\n     actual result: action points gained == %d\n", actionPoints);  
     }
 
     /***************************************************************************************
@@ -201,11 +201,11 @@ int main()
     if (testSum < testTotal)
     {
         int testFails = testTotal - testSum;
-        printf("Card Test 3 failed %d out of 5 test cases \n", testFails);
+        printf("Card Test 4 failed %d out of 5 test cases \n", testFails);
     }
     //if all test cases passed, output success message
     else if (testSum == testTotal)
-        printf("Card Test 3 passed all 5 test cases \n");
+        printf("Card Test 4 passed all 5 test cases \n");
 
 
 
