@@ -145,7 +145,8 @@ int main()
     newVictoryCount += G.supplyCount[province];
 
     //for each kingdom card, add the number in supply to the new kingdom card count (ie. after playing Smithy card)
-    for(int i = adventurer; i <= great_hall; i++)
+    int i;
+    for(i = adventurer; i <= great_hall; i++)
     {
         newKingdomCount += G.supplyCount[i];
     }
