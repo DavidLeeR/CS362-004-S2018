@@ -109,7 +109,7 @@ int main()
         printf("Card Test 2, part 1 (player 1 should gain 2 treasure cards)... \n     PASS\n     expected result: treasure cards gained == 2\n     actual result: treasure cards gained == 2\n");  
         testSum++;
     }
-    else if(cardsGained != 2)
+    else
     {
         printf("Cards Test 2, part 1 (player 1 should gain 2 treasure cards)... \n     FAIL\n     expected result: treasure cards gained == 2\n     actual result: cards gained == %d, treasure cards gained == %d\n", cardsGained, treasureGained);  
     }
@@ -171,11 +171,11 @@ int main()
     if (testSum < testTotal)
     {
         int testFails = testTotal - testSum;
-        printf("Unit Test 1 failed %d out of 4 test cases \n", testFails);
+        printf("Card Test 2 failed %d out of 4 test cases \n", testFails);
     }
     //if all test cases passed, output success message
     else if (testSum == testTotal)
-        printf("Unit Test 1 passed all 4 test cases \n");
+        printf("Card Test 2 passed all 4 test cases \n");
 
 
 

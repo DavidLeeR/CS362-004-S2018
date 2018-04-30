@@ -17,7 +17,7 @@
 //1. current player's hand should increase by exactly 3 cards
 //2. The 3 in test case 1 should come from the same player's pile
 //3. there should be no state change for other players
-//4. there should be no state change for the victory card piles or the kingdom card piles
+//4. there should be no state change for the victory cards or the kingdom cards
 int main() 
 {
     int seed = 1000;        //seed for random numbers
@@ -77,22 +77,23 @@ int main()
     oldDeckCount3 = G.deckCount[2];
 
     /******************************************************************************************************************************
-     *PART 1: check if player 1's hand increases by exactly 2 cards after playing Smithy (accounting for Smithy being discarded)  *
+     *PART 1: check if player 1's hand increases by exactly 3 cards after playing Smithy (accounting for Smithy being discarded)  *
      ******************************************************************************************************************************/
     playCard(cardIndex,-1, -1, -1, &G);
 
     newHandCount = G.handCount[0];
     cardsGained = newHandCount - oldHandCount;
 
-    //if exactly 2 cards were drawn to player 1's hand after the smithy card was played, test passes
+    //if exactly 3 cards were drawn to player 1's hand after the smithy card was played, test passes
+    //note*: this is equal to 2 to account for smithy being discarded
     if(cardsGained == 2)
     {
-        printf("Card Test 1, part 1 (player 1 should gain 3 cards in their hand)... \n     PASS\n     expected result: cards gained == 2\n     actual result: cards gained == 2\n");  
+        printf("Card Test 1, part 1 (player 1 should gain 3 cards in their hand)... \n     PASS\n     expected result: cards gained == 3\n     actual result: cards gained == 3\n");  
         testSum++;
     }
     else if(cardsGained != 2)
     {
-        printf("Cards Test 1, part 1 (player 1 should gain 3 cards in their hand)... \n     FAIL\n     expected result: cards gained == 2\n     actual result: cards gained == %d\n", cardsGained);  
+        printf("Cards Test 1, part 1 (player 1 should gain 3 cards in their hand)... \n     FAIL\n     expected result: cards gained == 3\n     actual result: cards gained == %d\n", cardsGained+1);  
     }
 
 
@@ -151,25 +152,11 @@ int main()
     newVictoryCount += G.supplyCount[duchy];
     newVictoryCount += G.supplyCount[province];
 
-    int m = 0;
-    for(m; m < G.handCount[0]; m++)
-    {
-        if(G.hand[0][m] == estate || G.hand[0][m] == duchy || G.hand[0][m] == province)
-            newVictoryCount ++;
-    }
-
     //for each kingdom card, add the number in supply to the new kingdom card count (ie. after playing Smithy card)
     int i;
     for(i = adventurer; i <= great_hall; i++)
     {
         newKingdomCount += G.supplyCount[i];
-    }
-
-    int n = 0;
-    for(n; n < G.handCount[0]; n++)
-    {
-        if(G.hand[0][n] >= adventurer && G.hand[0][n] <= great_hall)
-            newVictoryCount ++;
     }
 
     victoryChange = newVictoryCount - oldVictoryCount;
@@ -195,11 +182,11 @@ int main()
     if (testSum < testTotal)
     {
         int testFails = testTotal - testSum;
-        printf("Unit Test 1 failed %d out of 4 test cases \n", testFails);
+        printf("Card Test 1 failed %d out of 4 test cases \n", testFails);
     }
     //if all test cases passed, output success message
     else if (testSum == testTotal)
-        printf("Unit Test 1 passed all 4 test cases \n");
+        printf("Card Test 1 passed all 4 test cases \n");
 
 
 
