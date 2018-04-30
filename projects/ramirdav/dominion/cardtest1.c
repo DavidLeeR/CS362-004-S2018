@@ -50,8 +50,13 @@ int main()
     int cardsRemoved2;
     int cardsRemoved3;
     //variables for test part 4
-    int oldHandCount4;
-    int newHandCount4;
+    int oldVictoryCount = 36;
+    int newVictoryCount = 0;
+    int victoryChange;
+    int oldKingdomCount = 104;
+    int newKingdomCount = 0;
+    int kingdomChange;
+
 
     printf("\n\n\n******************Starting Card Test 1: Smithy card******************\n");   
     /*******************************************************************************************************************
@@ -114,15 +119,7 @@ int main()
     /***************************************************************************************
      *PART 3: check if there are no state changes to other players deck                    *
      ***************************************************************************************/
-    newHandCount2 = G.handCount[1];
-    newDeckCount2 = G.deckCount[1];
-    newHandCount3 = G.handCount[2];
-    newDeckCount3 = G.deckCount[2];
 
-    cardsGained2 = newHandCount2 - oldHandCount2;     //number of cards gained to player 2's hand
-    cardsRemoved2 = oldDeckCount2 - newDeckCount2;    //number of cards removed from player 2's deck
-    cardsGained3 = newHandCount3 - oldHandCount3;     //number of cards gained to player 3's hand
-    cardsRemoved3 = oldDeckCount3 - newDeckCount3;    //number of cards removed from player 3's deck
     
 
 
@@ -135,6 +132,36 @@ int main()
     else
     {
         printf("Cards Test 1, part 3 (player 2 and 3 should have no deck/hand change)... \n     FAIL\n     expected result: p1 gained/removed == 0, p2 gained/removed == 0\n     actual result: p2 gained == %d, p2 removed == %d, p3 gained == %d, p3 removed == %d\n", cardsGained2, cardsRemoved2, cardsGained3, cardsRemoved3);  
+    }
+
+
+
+    /***************************************************************************************
+     *PART 4: check if there are no state changes to victory and kingdom cards             *
+     ***************************************************************************************/
+    //count all victory cards after player 1 plays Smithy card
+    newVictoryCount += G.supplyCount[estate];
+    newVictoryCount += G.supplyCount[duchy];
+    newVictoryCount += G.supplyCount[province];
+
+    //for each kingdom card, add the number in supply to the new kingdom card count (ie. after playing Smithy card)
+    for(int i = adventurer; i <= great_hall; i++)
+    {
+        newKingdomCount += G.supplyCount[i];
+    }
+
+    victoryChange = newVictoryCount - oldVictoryCount;
+    kingdomChange = newKingdomCount - oldKingdomCount;
+
+    //if there are no changes to the victory card and kingdom card supply then test passes
+    if(victoryChange == 0 && kingdomChange == 0)
+    {
+        printf("Card Test 1, part 4 (there should be no change in victory/kingdom card supply)... \n     PASS\n     expected result: victory/kingdom card supply change == 0\n     actual result: victory/kingdom card supply change == 0\n");  
+        testSum++;
+    }
+    else
+    {
+        printf("Cards Test 1, part 4 (there should be no change in victory/kingdom card supply)... \n     FAIL\n     expected result: victory/kingdom card supply change == 0\n     actual result: victory card supply change == %d, kingdom card supply change == %d\n", victoryChange, kingdomChange);  
     }
 
 
