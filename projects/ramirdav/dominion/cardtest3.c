@@ -111,7 +111,7 @@ int main()
         printf("Card Test 1, part 2 (player 1 should gain 1 action point)... \n     PASS\n     expected result: action points gained == 1\n     actual result: action points gained == 1\n");  
         testSum++;
     }
-    else if(cardsGained != 0)
+    else
     {
         printf("Cards Test 1, part 2 (player 1 should gain 1 action point)... \n     FAIL\n     expected result: action points gained == 1\n     actual result: action points gained == %d\n", actionPoints);  
     }
