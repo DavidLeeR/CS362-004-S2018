@@ -17,7 +17,7 @@
 //1. exactly 2 treasure cards should be added to player 1's hand after playing Adventurer card
 //2. the discarded cards and the 2 treasure cards should come from player 1's supply pile
 //3. there should be no state change for other players
-//4. there should be no state change for the victory card piles or the kingdom card piles
+//4. 
 int main() 
 {
     
@@ -35,12 +35,25 @@ int main()
     int newHandCount;
     int cardsGained;
     int treasureGained;
-
+    //variables for test part 2
+    int numDiscarded;
     int oldDeckCount;
-    int oldHandCount2;
+    int newDeckCount;
+    int totalFromDeck;
+    int deckDiff;
+    //variables for test part 3
     int oldDeckCount2;
-    int oldHandCount3;
+    int newDeckCount2;
+    int oldHandCount2;
+    int newHandCount2;
     int oldDeckCount3;
+    int newDeckCount3;
+    int oldHandCount3;
+    int newHandCount3;
+    int cardsGained2;
+    int cardsGained3;
+    int cardsRemoved2;
+    int cardsRemoved3;
  
 
 
@@ -70,11 +83,12 @@ int main()
         if(G.hand[0][j] == copper || G.hand[0][j] == silver || G.hand[0][j] == gold) 
             oldTreasureCount++;
     }
-printf("%d\n", oldTreasureCount);
+
+
     /****************************************************************************************************
      *PART 1: check if player 1's hand increases by exactly 2 treasure cards after playing Adventurer   *
      ****************************************************************************************************/
-    playCard(cardIndex,1, 1, 1, &G);
+    playCard(cardIndex,-1, -1, -1, &G);
 
     newHandCount = G.handCount[0];
     cardsGained = newHandCount - oldHandCount;
@@ -85,7 +99,6 @@ printf("%d\n", oldTreasureCount);
         if(G.hand[0][i] == copper || G.hand[0][i] == silver || G.hand[0][i] == gold) 
             newTreasureCount++;
     }
-printf("%d\n", newTreasureCount);
 
     treasureGained = newTreasureCount - oldTreasureCount;
 
@@ -99,6 +112,52 @@ printf("%d\n", newTreasureCount);
     else if(cardsGained != 2)
     {
         printf("Cards Test 2, part 1 (player 1 should gain 2 treasure cards)... \n     FAIL\n     expected result: treasure cards gained == 2\n     actual result: cards gained == %d, treasure cards gained == %d\n", cardsGained, treasureGained);  
+    }
+
+
+    /****************************************************************************************************
+     *PART 2: check if cards drawn in STEP 1 came from player 1's supply pile                           *
+     ****************************************************************************************************/
+    numDiscarded = G.discardCount[0];
+    newDeckCount = G.deckCount[0];
+    totalFromDeck = numDiscarded + 2;       //the total number of cards from the deck should equal all discarded cards and 2 treasure cards
+    deckDiff = oldDeckCount - newDeckCount;
+
+    if(totalFromDeck == deckDiff)
+    {
+        printf("Card Test 2, part 2 (cards drawn in PART 1 should be from player 1's pile)... \n     PASS\n     expected result: deck difference == # cards added and discarded\n     actual result: deck difference == # cards added and discarded\n");  
+        testSum++;
+    }
+    else
+    {
+        printf("Cards Test 2, part 2 (cards drawn in PART 1 should be from player 1's pile)... \n     FAIL\n     expected result: deck difference == # cards added and discarded\n     actual result: deck difference == %d, cards added and discarded == %d\n", deckDiff, totalFromDeck);  
+    }
+
+
+    /***************************************************************************************
+     *PART 3: check if there are no state changes to other players deck                    *
+     ***************************************************************************************/
+    newHandCount2 = G.handCount[1];
+    newDeckCount2 = G.deckCount[1];
+    newHandCount3 = G.handCount[2];
+    newDeckCount3 = G.deckCount[2];
+
+    cardsGained2 = newHandCount2 - oldHandCount2;     //number of cards gained to player 2's hand
+    cardsRemoved2 = oldDeckCount2 - newDeckCount2;    //number of cards removed from player 2's deck
+    cardsGained3 = newHandCount3 - oldHandCount3;     //number of cards gained to player 3's hand
+    cardsRemoved3 = oldDeckCount3 - newDeckCount3;    //number of cards removed from player 3's deck
+    
+
+
+    //if there are no changes to player 2 or player 3's deck and hand then test passes
+    if(cardsGained2 == 0 && cardsRemoved2 == 0 && cardsGained3 == 0 && cardsRemoved3 == 0)
+    {
+        printf("Card Test 1, part 3 (player 2 and 3 should have no deck/hand change)... \n     PASS\n     expected result: p2 gained/removed == 0, p3 gained/removed == 0\n     actual result: p2 gained/removed == 0, p3 gained/removed == 0\n");  
+        testSum++;
+    }
+    else
+    {
+        printf("Cards Test 1, part 3 (player 2 and 3 should have no deck/hand change)... \n     FAIL\n     expected result: p2 gained/removed == 0, p3 gained/removed == 0\n     actual result: p2 gained == %d, p2 removed == %d, p3 gained == %d, p3 removed == %d\n", cardsGained2, cardsRemoved2, cardsGained3, cardsRemoved3);  
     }
 
 

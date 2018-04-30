@@ -79,7 +79,7 @@ int main()
     /******************************************************************************************************************************
      *PART 1: check if player 1's hand increases by exactly 2 cards after playing Smithy (accounting for Smithy being discarded)  *
      ******************************************************************************************************************************/
-    playCard(cardIndex,1, 1, 1, &G);
+    playCard(cardIndex,-1, -1, -1, &G);
 
     newHandCount = G.handCount[0];
     cardsGained = newHandCount - oldHandCount;
