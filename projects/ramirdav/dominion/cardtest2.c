@@ -20,6 +20,7 @@
 //4. there should be no state change for the victory card piles or the kingdom card piles
 int main() 
 {
+    
     int seed = 1000;        //seed for random numbers
     int k[10] = {adventurer, baron, council_room, feast, gardens, great_hall, mine, remodel, smithy, village};      //kingdom cards
     int playerCount = 3;
@@ -43,7 +44,7 @@ int main()
  
 
 
-    printf("\n\n\n******************Starting Card Test 1: Smithy card******************\n");   
+    printf("\n\n\n******************Starting Card Test 2: Adventurer card******************\n");   
     /*******************************************************************************************************************
      *SETUP: initalize game, give player 1 Adventurer card, and record each player's hand size before using Adventurer card    *
      *******************************************************************************************************************/     
@@ -63,13 +64,13 @@ int main()
     oldDeckCount3 = G.deckCount[2];
 
     //record number of treasure cards for player 1 before playing adventurer card
-    int j = 0;
-    for(j; j < oldHandCount; j++)
+    int j;
+    for(j = 0; j < oldHandCount; j++)
     {
         if(G.hand[0][j] == copper || G.hand[0][j] == silver || G.hand[0][j] == gold) 
             oldTreasureCount++;
     }
-
+printf("%d\n", oldTreasureCount);
     /****************************************************************************************************
      *PART 1: check if player 1's hand increases by exactly 2 treasure cards after playing Adventurer   *
      ****************************************************************************************************/
@@ -78,12 +79,13 @@ int main()
     newHandCount = G.handCount[0];
     cardsGained = newHandCount - oldHandCount;
 
-    int i = 0;
-    for(i; i < newHandCount; i++)
+    int i;
+    for(i = 0; i < newHandCount; i++)
     {
         if(G.hand[0][i] == copper || G.hand[0][i] == silver || G.hand[0][i] == gold) 
             newTreasureCount++;
     }
+printf("%d\n", newTreasureCount);
 
     treasureGained = newTreasureCount - oldTreasureCount;
 
