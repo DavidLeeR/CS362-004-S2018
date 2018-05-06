@@ -1,3 +1,3 @@
-run with *make testme*
+run with **make testme**
 
-clean with *make clean*
+clean with **make clean**
