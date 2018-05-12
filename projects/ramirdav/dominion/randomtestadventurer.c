@@ -6,6 +6,13 @@
 #include "rngs.h"
 #include "interface.h"
 
+//Random Test 1: Adventurer card
+//1. exactly 2 treasure cards should be added to player 1's hand after playing Adventurer card
+//2. the discarded cards and the 2 treasure cards should come from player 1's supply pile
+//3. there should be no state change for other players
+//4. check if no state change to kingdom/victory card piles
+//5. deck should be shuffled if is 0 when using Adventurer
+
 struct gameState G;
 struct gameState G2;
 int passes = 0;
@@ -17,9 +24,9 @@ void beforeTreasureCheck()
 {
 	treas = 0;
 	int p = 0;
-	for (p; p < G2.handCount[G2.whoseTurn]; p++) {
+	for (p; p < G2.handCount[0]; p++) {
 		
-		if ((G2.hand[G2.whoseTurn][p] == gold) || (G2.hand[G2.whoseTurn][p] == silver) || (G2.hand[G2.whoseTurn][p] == copper)) {
+		if ((G2.hand[0][p] == gold) || (G2.hand[0][p] == silver) || (G2.hand[0][p] == copper)) {
 			treas++;
 		}
 	}
@@ -31,9 +38,9 @@ void treasureTesting(int count)
 	int treas2 = 0;
 	//test that two treasures were drawn
 	int k = 0;
-	for (k; k < G2.handCount[G2.whoseTurn]; k++) {
+	for (k; k < G2.handCount[0]; k++) {
 		
-		if ((G2.hand[G2.whoseTurn][k] == gold) || (G2.hand[G2.whoseTurn][k] == silver) || (G2.hand[G2.whoseTurn][k] == copper)) {
+		if ((G2.hand[0][k] == gold) || (G2.hand[0][k] == silver) || (G2.hand[0][k] == copper)) {
 			treas2++;
 		}
 	}
@@ -70,7 +77,7 @@ int main() {
 		G2.numPlayers = rand() % 11;
 
 		//change player's first card to adventurer
-		G2.hand[G2.whoseTurn][0] = k[0];
+		G2.hand[0][0] = k[0];
 
 		//randomize numActions -- range of 0 to 2
 		G2.numActions = rand() % 3;
@@ -78,11 +85,11 @@ int main() {
 		G2.numBuys = rand() % 3;
 		
 		//randomize hand position -- limit it to player's hand count
-		handP = rand() % (G2.handCount[G2.whoseTurn] + 1);
+		handP = rand() % (G2.handCount[0] + 1);
 		
 		beforeTreasureCheck();
 		
-		cardEffect(adventurer, 0, 0, 0, &G2, handP, &bonus);
+		cardEffect(adventurer, -1, -1, -1, &G2, handP, &bonus);
 		
 		treasureTesting(i);
 
