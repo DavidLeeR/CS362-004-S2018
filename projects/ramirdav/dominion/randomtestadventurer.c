@@ -23,25 +23,25 @@ int main() {
 		initializeGame(numPlayers, k, seed, &G);
 		
 		//make a test game
-		//memcpy(&testG, &G, sizeof(struct gameState));
+		memcpy(&testG, &G, sizeof(struct gameState));
 
 		//change player's first card to adventurer
-		G.hand[thisPlayer][0] = k[0];
+		testG.hand[thisPlayer][0] = k[0];
 		
 		//randomize number of players -- limit is from 0 to 10
-		G.numPlayers = rand() % 11;
+		testG.numPlayers = rand() % 11;
 		//randomize hand position -- limit it to player's hand count
-		handpos = rand() % (G.handCount[thisPlayer] + 1);
+		handpos = rand() % (testG.handCount[thisPlayer] + 1);
 		//randomize numActions -- range of 0 to 2
-		G.numActions = rand() % 3;
+		testG.numActions = rand() % 3;
 		//randomize numBuys -- range of 0 to 2
-		G.numBuys = rand() % 3;
+		testG.numBuys = rand() % 3;
 		
-		cardEffect(adventurer, choice1, choice2, choice3, &G, handpos, &bonus);
+		cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
 		
 		//test that two treasures were drawn
-		for (i = 0; i < G.handCount[thisPlayer]; i++) {
-			if ((G.hand[thisPlayer][i] == copper) || (G.hand[thisPlayer][i] == silver) || (G.hand[thisPlayer][i] == gold)) {
+		for (i = 0; i < testG.handCount[thisPlayer]; i++) {
+			if ((testG.hand[thisPlayer][i] == copper) || (testG.hand[thisPlayer][i] == silver) || (testG.hand[thisPlayer][i] == gold)) {
 				treasures++;
 			}
 		}
