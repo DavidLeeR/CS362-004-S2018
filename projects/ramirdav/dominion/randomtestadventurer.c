@@ -13,7 +13,8 @@ int main() {
 	struct gameState G2;
 	int handpos = 0;
 	int bonus = 0;
-	int pass = 0, fail = 0;
+	int passes = 0;
+	int fails = 0;
 	int numPlayers = 2;
 	int curPlayer = 0;   
 	int seed = 1000;
@@ -62,6 +63,6 @@ int main() {
 		
 
 	}
-	printf("TOTAL PASS: %d\nTOTAL FAIL: %d\n", pass, fail);
+	printf("Adventurer card random test results:\n      Passing Tests:%d\n     Failing Tests:%d\n", pass, fail);
     return 0;
 }
