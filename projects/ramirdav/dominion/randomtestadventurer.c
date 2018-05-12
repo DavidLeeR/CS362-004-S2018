@@ -165,7 +165,7 @@ int main() {
 		//randomize discard count for each player (500 is max deck size)
 		int g = 0;
 		for (g; g < numPlayers; g++)
-			G2.discardCount[h] = rand() % 501;
+			G2.discardCount[g] = rand() % 501;
 
 		/******************************************************************
 		 *                        Setup for Tests                         *
