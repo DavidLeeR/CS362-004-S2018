@@ -150,6 +150,8 @@ int main() {
 		G2.numActions = rand() % 3;
 		//assign random number between 0 and 2 to number of buys
 		G2.numBuys = rand() % 3;
+		//randomly assign 0 or 1 to the outpost Played flag
+		G2.outpostPlayed = rand() % 2;
 		//Assign random number between 0 and handCount to hand position
 		handP = rand() % (G2.handCount[0] + 1);
 
