@@ -45,6 +45,7 @@ int main() {
 		//test that two treasures were drawn
 		int k = 0;
 		for (k; k < G2.handCount[curPlayer]; k++) {
+			t = 0;
 			if ((G2.hand[curPlayer][k] == copper) || (G2.hand[curPlayer][k] == silver) || (G2.hand[curPlayer][k] == gold)) {
 				t++;
 			}
