@@ -10,6 +10,7 @@ struct gameState G;
 struct gameState G2;
 int passes = 0;
 int fails = 0;
+int handP = 0;
 
 void treasureTesting()
 {
@@ -35,7 +36,6 @@ void treasureTesting()
 //testing adventurer card
 int main() {
 	int testNum = 99;
-	int handP = 0;
 	int bonus = 0;
 	int numPlayers = 2;
 	int seed = 1000;
