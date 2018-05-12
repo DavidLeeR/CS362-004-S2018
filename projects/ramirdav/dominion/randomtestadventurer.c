@@ -37,7 +37,7 @@ int main() {
 		//randomize numBuys -- range of 0 to 2
 		testG.numBuys = rand() % 3;
 		
-		cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+		adventurerFunction(&testG, testG.whoseTurn);
 		
 		//test that two treasures were drawn
 		for (i = 0; i < testG.handCount[thisPlayer]; i++) {
