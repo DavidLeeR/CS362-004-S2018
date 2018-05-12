@@ -6,23 +6,28 @@
 #include "rngs.h"
 #include "interface.h"
 
-void treasureTesting(struct gameState *Gtemp, int *passesRef, int *failsRef)
+struct gameState G;
+struct gameState G2;
+int passes = 0;
+int fails = 0;
+
+void treasureTesting()
 {
 	int t = 0;
 	//test that two treasures were drawn
 	int k = 0;
-	for (k; k < Gtemp.handCount[Gtemp.whoseTurn]; k++) {
+	for (k; k < G2.handCount[G2.whoseTurn]; k++) {
 		
-		if ((Gtemp.hand[Gtemp.whoseTurn][k] == gold) || (Gtemp.hand[Gtemp.whoseTurn][k] == silver) || (Gtemp.hand[Gtemp.whoseTurn][k] == copper)) {
+		if ((G2.hand[G2.whoseTurn][k] == gold) || (G2.hand[G2.whoseTurn][k] == silver) || (G2.hand[G2.whoseTurn][k] == copper)) {
 			t++;
 		}
 	}
 	if (t == 2) {
-		passesRef++;
+		passes++;
 		printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
 	}
 	else {
-		failsRef++;
+		fails++;
 		printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
 	}
 }
@@ -30,15 +35,11 @@ void treasureTesting(struct gameState *Gtemp, int *passesRef, int *failsRef)
 //testing adventurer card
 int main() {
 	int testNum = 99;
-	int passes = 0;
-	int fails = 0;
 	int handP = 0;
 	int bonus = 0;
 	int numPlayers = 2;
 	int seed = 1000;
 	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};
-	struct gameState G;
-	struct gameState G2;
 	
 	int i = 0;
 	for (i; i < testNum; i++) {
