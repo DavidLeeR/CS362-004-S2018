@@ -12,7 +12,7 @@ int passes = 0;
 int fails = 0;
 int handP = 0;
 
-void treasureTesting()
+void treasureTesting(int count)
 {
 	int t = 0;
 	//test that two treasures were drawn
@@ -25,11 +25,11 @@ void treasureTesting()
 	}
 	if (t == 2) {
 		passes++;
-		printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
+		printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
 	}
 	else {
 		fails++;
-		printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
+		printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
 	}
 }
 
@@ -66,7 +66,7 @@ int main() {
 		
 		cardEffect(adventurer, 0, 0, 0, &G2, handP, &bonus);
 		
-		treasureTesting(&G2, &passes, &fails);
+		treasureTesting(i);
 
 	}
 	printf("Adventurer card random test results:\n     Passing Tests:%d\n     Failing Tests:%d\n\n\n\n", passes, fails);
