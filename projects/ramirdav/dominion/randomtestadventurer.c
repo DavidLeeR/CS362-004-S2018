@@ -20,6 +20,8 @@ int fails = 0;
 int handP = 0;
 int treas;
 int oldDeckCount;
+int oldVictoryCount = 36;
+int oldKingdomCount = 104;
 
 void beforeTreasureCheck()
 {
@@ -74,6 +76,40 @@ void deckTesting(int count)
     {
 		fails++;
         printf("Deck Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, deck diff = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff);  
+    }
+}
+
+void victoryKingdomTesting(int count)
+{
+	int newKingdomCount;
+	int victoryChange;
+	int kingdomChange;
+	//count all victory cards after player 1 plays great_hall card
+    int newVictoryCount = G2.supplyCount[estate];
+    newVictoryCount += G2.supplyCount[duchy];
+    newVictoryCount += G2.supplyCount[province];
+
+    //for each kingdom card, add the number in supply to the new kingdom card count (ie. after playing great_hall card)
+    int m;
+    for(m = adventurer; m <= great_hall; m++)
+    {
+        newKingdomCount += G2.supplyCount[m];
+    }
+
+    victoryChange = newVictoryCount - oldVictoryCount;
+    kingdomChange = newKingdomCount - oldKingdomCount;
+
+    //if there are no changes to the victory card and kingdom card supply then test passes
+    if(victoryChange == 0 && kingdomChange == 0)
+    {
+		passes++;
+		printf("Victory/Kingdom Card Test # %d passed   \n     # players = %d, hand position = %d, # actions = %d,\n     # buys = %d, victory change = %d, kingdom change: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys,victoryChange,kingdomChange);  
+    }
+    else
+    {
+		fails++;
+		printf("Victory/Kingdom Card Test # %d failed   \n     # players = %d, hand position = %d, # actions = %d,\n     # buys = %d, victory change = %d, kingdom change: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys,victoryChange,kingdomChange);  
+		
     }
 }
 
