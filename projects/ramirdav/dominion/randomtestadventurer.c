@@ -82,10 +82,11 @@ void deckTesting(int count)
 void victoryKingdomTesting(int count)
 {
 	int newKingdomCount = 0;
+	int newVictoryCount = 0;
 	int victoryChange;
 	int kingdomChange;
 	//count all victory cards after player 1 plays great_hall card
-    int newVictoryCount = G2.supplyCount[estate];
+    newVictoryCount += G2.supplyCount[estate];
     newVictoryCount += G2.supplyCount[duchy];
     newVictoryCount += G2.supplyCount[province];
 
