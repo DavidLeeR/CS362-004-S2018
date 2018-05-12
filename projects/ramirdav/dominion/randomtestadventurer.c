@@ -81,7 +81,7 @@ void deckTesting(int count)
 
 void victoryKingdomTesting(int count)
 {
-	int newKingdomCount;
+	int newKingdomCount = 0;
 	int victoryChange;
 	int kingdomChange;
 	//count all victory cards after player 1 plays great_hall card
