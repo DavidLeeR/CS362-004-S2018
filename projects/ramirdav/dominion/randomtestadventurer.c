@@ -19,6 +19,7 @@ int passes = 0;
 int fails = 0;
 int handP = 0;
 int treas;
+int oldDeckCount;
 
 void beforeTreasureCheck()
 {
@@ -49,12 +50,31 @@ void treasureTesting(int count)
 	//if there were 2 added treasure cards to the hand
 	if (treas2 - treas == 2) {
 		passes++;
-		printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
+		printf("Treasure Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
 	}
 	else {
 		fails++;
-		printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
+		printf("Tresure Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
 	}
+}
+
+void deckTesting(int count)
+{
+	int numDiscarded = G2.discardCount[0];
+    int newDeckCount = G2.deckCount[0];
+    int totalFromDeck = numDiscarded + 2;       //the total number of cards from the deck should equal all discarded cards and 2 treasure cards
+    int deckDiff = oldDeckCount - newDeckCount;
+
+    if(totalFromDeck == deckDiff)
+    {
+		passes++;
+        printf("Deck Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  deck diff = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff);  
+    }
+    else
+    {
+		fails++;
+        printf("Deck Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, deck diff = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff);  
+    }
 }
 
 //testing adventurer card
@@ -88,10 +108,13 @@ int main() {
 		handP = rand() % (G2.handCount[0] + 1);
 		
 		beforeTreasureCheck();
+
+		oldDeckCount = G2.deckCount[0];
 		
 		cardEffect(adventurer, -1, -1, -1, &G2, handP, &bonus);
 		
 		treasureTesting(i);
+		deckTesting(i);
 
 	}
 	printf("Adventurer card random test results:\n     Passing Tests:%d\n     Failing Tests:%d\n\n\n\n", passes, fails);
