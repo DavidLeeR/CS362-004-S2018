@@ -2,11 +2,10 @@
 //Author: David Ramirez
 //Date: 5/13/18
 
-#include "dominion.h"
-#include "dominion_helpers.h"
 #include <string.h>
 #include <stdio.h>
-#include <assert.h>
+#include "dominion.h"
+#include "dominion_helpers.h"
 #include "rngs.h"
 #include "interface.h"
 
