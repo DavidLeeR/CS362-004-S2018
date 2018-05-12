@@ -53,11 +53,11 @@ int main() {
 			}
 		}
 		if (t == 2) {
-			pass++;
+			passes++;
 			printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handpos, G2.numActions, G2.numBuys, t);
 		}
 		else {
-			fail++;
+			fails++;
 			printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handpos, G2.numActions, G2.numBuys, t);
 		}
 		
