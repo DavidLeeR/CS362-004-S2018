@@ -134,7 +134,7 @@ int main() {
 		G2.numPlayers = rand() % 11;
 
 		//change player's first card to adventurer
-		G2.hand[0][0] = k[0];
+		//G2.hand[0][0] = k[0];
 
 		//randomize numActions -- range of 0 to 2
 		G2.numActions = rand() % 3;
@@ -143,12 +143,15 @@ int main() {
 		
 		//randomize hand position -- limit it to player's hand count
 		handP = rand() % (G2.handCount[0] + 1);
+
+		G2.hand[0][handP] = adventurer;
 		
 		beforeTreasureCheck();
 
 		oldDeckCount = G2.deckCount[0];
 		
-		cardEffect(adventurer, -1, -1, -1, &G2, handP, &bonus);
+		playCard(handP,-1, -1, -1, &G2);
+		//cardEffect(adventurer, -1, -1, -1, &G2, handP, &bonus);
 		
 		treasureTesting(i);
 		deckTesting(i);
