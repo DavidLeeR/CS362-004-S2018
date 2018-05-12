@@ -8,7 +8,7 @@
 
 //testing adventurer card
 int main() {
-	int testNum = 9999999;
+	int testNum = 99;
 	struct gameState G;
 	struct gameState G2;
 	int handpos = 0;
