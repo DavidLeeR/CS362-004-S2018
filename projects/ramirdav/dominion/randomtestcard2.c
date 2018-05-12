@@ -29,8 +29,9 @@ int oldDiscardCount;
 int oldHandCount;
 
 
-
+/******************************************************************************************/
 //test part 1: compares the number of cards in the deck before and after playing Village
+/******************************************************************************************/
 void deckTesting(int count)
 {
 
@@ -49,7 +50,10 @@ void deckTesting(int count)
     }
 }
 
+
+/******************************************************************************************/
 //test part 2: compares the number of cards in the hand before and after playing Village
+/******************************************************************************************/
 void handTesting(int count)
 {
     int newHandCount = G2.handCount[0];
@@ -67,7 +71,10 @@ void handTesting(int count)
     }
 }
 
+
+/******************************************************************************************/
 //test part 3: calculates number of action points gained (considering 1 being used to play Village)
+/******************************************************************************************/
 void actionTesting(int count)
 {
 	int actionPoints = G.numActions;
@@ -87,7 +94,9 @@ void actionTesting(int count)
 }
 
 
+/******************************************************************************************/
 //test part 4: compares the number of victory and kingdom cards before and after playing Village
+/******************************************************************************************/
 void victoryKingdomTesting(int count)
 {
 	int newKingdomCount = 0;
@@ -123,9 +132,12 @@ void victoryKingdomTesting(int count)
     }
 }
 
+
+/******************************************************************************************/
 //main test loop
+/******************************************************************************************/
 int main() {
-	int testNum = 50;
+	int testNum = 1000;
 	int bonus = 0;
 	int numPlayers = 2;
 	int seed = 1000;
@@ -162,13 +174,13 @@ int main() {
 		/******************************************************************
 		 *                        Setup for Tests                         *
 		 * ***************************************************************/
-		//Assign adventurer card to current hand position
+		//Assign village card to current hand position
 		G2.hand[0][handP] = village;
-		//check deck count before playing Adventurer
+		//check deck count before playing village
 		oldDeckCount = G2.deckCount[0];
-		//check discard count before playing Adventurer
+		//check discard count before playing village
 		oldDiscardCount = G2.discardCount[0];
-		//check hand count before playing Adventurer
+		//check hand count before playing village
 		oldHandCount = G2.handCount[0];
 		//set the victory/kingdom card count depending on number of players
 		if (numPlayers == 2)
@@ -185,7 +197,7 @@ int main() {
 		/******************************************************************
 		 *                          Play Card                             *
 		 * ***************************************************************/
-		//play Adventurer
+		//play village
 		playCard(handP,-1, -1, -1, &G2);
 	
 

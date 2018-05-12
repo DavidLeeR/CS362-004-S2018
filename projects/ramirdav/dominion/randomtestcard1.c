@@ -29,8 +29,9 @@ int oldDiscardCount;
 int oldHandCount;
 
 
-
+/******************************************************************************************/
 //test part 1: compares the number of cards in the deck before and after playing great hall
+/******************************************************************************************/
 void deckTesting(int count)
 {
 
@@ -49,7 +50,10 @@ void deckTesting(int count)
     }
 }
 
+
+/******************************************************************************************/
 //test part 2: compares the number of cards in the hand before and after playing great hall
+/******************************************************************************************/
 void handTesting(int count)
 {
     int newHandCount = G2.handCount[0];
@@ -67,12 +71,16 @@ void handTesting(int count)
     }
 }
 
+
+/******************************************************************************************/
 //test part 3: calculates number of action points gained (considering 1 being used to play great hall)
+/******************************************************************************************/
+
 void actionTesting(int count)
 {
 	int actionPoints = G.numActions;
 	
-	//if exactly 1 action point was added to player 1 after the village card was played, test passes
+	//if exactly 1 action point was added to player 1 after the great hall card was played, test passes
 	if(actionPoints == 1)
 	{
 		passes++;
@@ -86,8 +94,9 @@ void actionTesting(int count)
 	}
 }
 
-
-//test part 4: compares the number of victory and kingdom cards before and after playing Village
+/******************************************************************************************/
+//test part 4: compares the number of victory and kingdom cards before and after playing great hall
+/******************************************************************************************/
 void victoryKingdomTesting(int count)
 {
 	int newKingdomCount = 0;
@@ -123,13 +132,16 @@ void victoryKingdomTesting(int count)
     }
 }
 
+
+/******************************************************************************************/
 //main test loop
+/******************************************************************************************/
 int main() {
-	int testNum = 50;
+	int testNum = 1000;       //number of times to run test loop
 	int bonus = 0;
 	int numPlayers = 2;
 	int seed = 1000;
-	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};
+	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};     //kingdom cards
 	
 	int i = 0;
 	for (i; i < testNum; i++) {
@@ -162,13 +174,13 @@ int main() {
 		/******************************************************************
 		 *                        Setup for Tests                         *
 		 * ***************************************************************/
-		//Assign adventurer card to current hand position
-		G2.hand[0][handP] = village;
-		//check deck count before playing Adventurer
+		//Assign great hall card to current hand position
+		G2.hand[0][handP] = great_hall;
+		//check deck count before playing great hall
 		oldDeckCount = G2.deckCount[0];
-		//check discard count before playing Adventurer
+		//check discard count before playing great hall
 		oldDiscardCount = G2.discardCount[0];
-		//check hand count before playing Adventurer
+		//check hand count before playing great hall
 		oldHandCount = G2.handCount[0];
 		//set the victory/kingdom card count depending on number of players
 		if (numPlayers == 2)
@@ -185,7 +197,7 @@ int main() {
 		/******************************************************************
 		 *                          Play Card                             *
 		 * ***************************************************************/
-		//play Adventurer
+		//play great hall
 		playCard(handP,-1, -1, -1, &G2);
 	
 

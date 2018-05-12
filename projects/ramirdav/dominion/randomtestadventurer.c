@@ -9,11 +9,11 @@
 #include "rngs.h"
 
 
-
 //Random Test 1: Adventurer card
 //1. exactly 2 treasure cards should be added to player 1's hand after playing Adventurer card
 //2. the discarded cards and the 2 treasure cards should come from player 1's supply pile
 //3. check if no state change to kingdom/victory card piles
+
 
 //Global Variables
 struct gameState G;
@@ -26,6 +26,8 @@ int oldDeckCount;
 int oldVictoryCount;
 int oldKingdomCount;
 int oldDiscardCount;
+
+
 
 //checks the number of treasure cards in player 1's hand before playing Adventurer
 void beforeTreasureCheck()
@@ -42,7 +44,9 @@ void beforeTreasureCheck()
 }
 
 
+/******************************************************************************************/
 //test part 1: checks the number of treasure cards in player 1's hand after playing Adventurer
+/******************************************************************************************/
 void treasureTesting(int count)
 {
 	int treas2 = 0;
@@ -68,7 +72,9 @@ void treasureTesting(int count)
 }
 
 
+/******************************************************************************************/
 //test part 2: compares the number of cards in the deck before and after playing Adventurer
+/******************************************************************************************/
 void deckTesting(int count)
 {
 	int numDiscarded = G2.discardCount[0] - oldDiscardCount;
@@ -89,7 +95,9 @@ void deckTesting(int count)
 }
 
 
+/******************************************************************************************/
 //test part 3: compares the number of victory and kingdom cards before and after playing Adventurer
+/******************************************************************************************/
 void victoryKingdomTesting(int count)
 {
 	int newKingdomCount = 0;
@@ -125,9 +133,12 @@ void victoryKingdomTesting(int count)
     }
 }
 
+
+/******************************************************************************************/
 //main test loop
+/******************************************************************************************/
 int main() {
-	int testNum = 500;		//number of times to run tests
+	int testNum = 1000;		//number of times to run tests
 	int bonus = 0;
 	int seed = 1000;
 	int numPlayers;
