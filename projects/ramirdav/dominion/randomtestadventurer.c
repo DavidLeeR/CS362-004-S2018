@@ -138,7 +138,7 @@ void victoryKingdomTesting(int count)
 //main test loop
 /******************************************************************************************/
 int main() {
-	int testNum = 1000;		//number of times to run tests
+	int testNum = 1000000;		//number of times to run tests
 	int bonus = 0;
 	int seed = 1000;
 	int numPlayers;
