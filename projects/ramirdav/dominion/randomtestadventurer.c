@@ -24,8 +24,8 @@ int fails = 0;
 int handP = 0;
 int treas;
 int oldDeckCount;
-int oldVictoryCount = 36;
-int oldKingdomCount = 104;
+int oldVictoryCount;
+int oldKingdomCount;
 
 //checks the number of treasure cards in player 1's hand before playing Adventurer
 void beforeTreasureCheck()
@@ -129,7 +129,7 @@ void victoryKingdomTesting(int count)
 int main() {
 	int testNum = 99;
 	int bonus = 0;
-	int numPlayers = 2;
+	int numPlayers = rand() % 11;
 	int seed = 1000;
 	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};
 	
@@ -145,7 +145,7 @@ int main() {
 		 * ***************************************************************/
 
 		//assign random number between 0 and 10 to number of players
-		G2.numPlayers = rand() % 11;
+		//G2.numPlayers = rand() % 11;
 		//assign random number between 0 and 2 to number of actions
 		G2.numActions = rand() % 3;
 		//assign random number between 0 and 2 to number of buys
@@ -164,6 +164,18 @@ int main() {
 		beforeTreasureCheck();
 		//check deck count before playing Adventurer
 		oldDeckCount = G2.deckCount[0];
+
+		//set the victory/kingdom card count depending on number of players
+		if (numPlayers == 2)
+		{
+			oldVictoryCount = 24;
+			oldKingdomCount = 96;
+		}
+		else
+		{	
+			oldVictoryCount = 36;
+			oldKingdomCount = 104;
+		}
 		
 		/******************************************************************
 		 *                          Play Card                             *
