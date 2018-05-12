@@ -14,10 +14,9 @@
 //Random Card Test 2: Village card
 //1. player 1's deck should be missing exactly 1 cards after playing village card
 //2. exactly 1 card should be drawn into player 1's hand after playing village card
-//2. player 1 should gain exactly 2 action points after playing village card
-//3. the drawn card should come from player 1's supply pile
+//3. player 1 should gain exactly 2 action points after playing village card
 //???????4. there should be no state change for other players
-//5. there should be no state change for victory/kingdom card piles
+//4. there should be no state change for victory/kingdom card piles
 
 //Global Variables
 struct gameState G;
@@ -62,17 +61,36 @@ void handTesting(int count)
     if(handDiff == 1)
     {
 		passes++;
-        printf("Deck Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  hand diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, handDiff, oldDeckCount, oldDiscardCount, handP);  
+        printf("Hand Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  hand diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, handDiff, oldDeckCount, oldDiscardCount, handP);  
     }
     else
     {
 		fails++;
-        printf("Deck Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, hand diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, handDiff,  oldDeckCount, oldDiscardCount, handP);  
+        printf("Hand Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, hand diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, handDiff,  oldDeckCount, oldDiscardCount, handP);  
     }
 }
 
+//test part 3: calculates number of action points gained (considering 1 being used to play Village)
+void actionTesting(int count)
+{
+	int actionPoints = G.numActions;
+	
+	//if exactly 2 action points was added to player 1 after the village card was played, test passes
+	if(actionPoints == 2)
+	{
+		passes++;
+        printf("Action Point Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  action points = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, actionPoints, oldDeckCount, oldDiscardCount, handP);  
+		
+	}
+	else
+	{
+		fails++;
+		printf("Action Point Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, action points = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, actionPoints,  oldDeckCount, oldDiscardCount, handP);  		
+	}
+}
 
-//test part 3: compares the number of victory and kingdom cards before and after playing Village
+
+//test part 4: compares the number of victory and kingdom cards before and after playing Village
 void victoryKingdomTesting(int count)
 {
 	int newKingdomCount = 0;
@@ -110,7 +128,7 @@ void victoryKingdomTesting(int count)
 
 //main test loop
 int main() {
-	int testNum = 99;
+	int testNum = 50;
 	int bonus = 0;
 	int numPlayers = 2;
 	int seed = 1000;
@@ -178,6 +196,6 @@ int main() {
 	}
 
 	//output totals
-	printf("Adventurer card random test results:\n     Passing Tests:%d\n     Failing Tests:%d\n\n\n\n", passes, fails);
+	printf("Village card random test results:\n     Passing Tests:%d\n     Failing Tests:%d\n\n\n\n", passes, fails);
     return 0;
 }
