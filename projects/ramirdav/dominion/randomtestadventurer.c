@@ -30,7 +30,7 @@ void beforeTreasureCheck()
 			treas++;
 		}
 	}
-	printf("%d\n", treas);
+	//printf("%d\n", treas);
 }
 
 void treasureTesting(int count)
@@ -45,15 +45,15 @@ void treasureTesting(int count)
 		}
 	}
 
-	printf("%d\n", treas2);
+	//printf("%d\n", treas2);
 	//if there were 2 added treasure cards to the hand
 	if (treas2 - treas == 2) {
 		passes++;
-		//printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
+		printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
 	}
 	else {
 		fails++;
-		//printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
+		printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
 	}
 }
 
