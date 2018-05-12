@@ -128,11 +128,11 @@ void victoryKingdomTesting(int count)
 
 //main test loop
 int main() {
-	int testNum = 99;
+	int testNum = 500;		//number of times to run tests
 	int bonus = 0;
 	int seed = 1000;
 	int numPlayers;
-	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};
+	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room}; //kingdom cards
 	
 	int i = 0;
 	for (i; i < testNum; i++) {
@@ -147,9 +147,6 @@ int main() {
 		/******************************************************************
 		 *                          Randomization                         *
 		 * ***************************************************************/
-
-		//assign random number between 0 and 10 to number of players
-		//G2.numPlayers = rand() % 11;
 		//assign random number between 0 and 2 to number of actions
 		G2.numActions = rand() % 3;
 		//assign random number between 0 and 2 to number of buys
