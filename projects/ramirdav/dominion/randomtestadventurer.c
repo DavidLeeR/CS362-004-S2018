@@ -6,9 +6,9 @@
 #include "rngs.h"
 #include "interface.h"
 
-void treasureTesting(struct gameState &Gtemp, int &passesRef, int &failsRef)
+void treasureTesting(struct gameState *Gtemp, int *passesRef, int *failsRef)
 {
-	int t = 0
+	int t = 0;
 	//test that two treasures were drawn
 	int k = 0;
 	for (k; k < Gtemp.handCount[Gtemp.whoseTurn]; k++) {
