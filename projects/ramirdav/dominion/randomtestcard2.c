@@ -22,7 +22,6 @@ struct gameState G2;
 int passes = 0;
 int fails = 0;
 int handP = 0;
-int treas;
 int oldDeckCount;
 int oldVictoryCount;
 int oldKingdomCount;
@@ -41,12 +40,12 @@ void deckTesting(int count)
     if(deckDiff == 1)
     {
 		passes++;
-        printf("Deck Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  deck diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff, oldDeckCount, oldDiscardCount, handP);  
+        printf("Deck Test # %d \npassed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  deck diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff, oldDeckCount, oldDiscardCount, handP);  
     }
     else
     {
 		fails++;
-        printf("Deck Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, deck diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff,  oldDeckCount, oldDiscardCount, handP);  
+        printf("Deck Test # %d \nfailed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, deck diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff,  oldDeckCount, oldDiscardCount, handP);  
     }
 }
 
@@ -59,12 +58,12 @@ void handTesting(int count)
     if(handDiff == 1)
     {
 		passes++;
-        printf("Hand Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  hand diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, handDiff, oldDeckCount, oldDiscardCount, handP);  
+        printf("Hand Test # %d \npassed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  hand diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, handDiff, oldDeckCount, oldDiscardCount, handP);  
     }
     else
     {
 		fails++;
-        printf("Hand Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, hand diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, handDiff,  oldDeckCount, oldDiscardCount, handP);  
+        printf("Hand Test # %d \nfailed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, hand diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, handDiff,  oldDeckCount, oldDiscardCount, handP);  
     }
 }
 
@@ -77,13 +76,13 @@ void actionTesting(int count)
 	if(actionPoints == 2)
 	{
 		passes++;
-        printf("Action Point Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  action points = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, actionPoints, oldDeckCount, oldDiscardCount, handP);  
+        printf("Action Point Test # %d \npassed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  action points = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, actionPoints, oldDeckCount, oldDiscardCount, handP);  
 		
 	}
 	else
 	{
 		fails++;
-		printf("Action Point Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, action points = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, actionPoints,  oldDeckCount, oldDiscardCount, handP);  		
+		printf("Action Point Test # %d \nfailed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, action points = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, actionPoints,  oldDeckCount, oldDiscardCount, handP);  		
 	}
 }
 

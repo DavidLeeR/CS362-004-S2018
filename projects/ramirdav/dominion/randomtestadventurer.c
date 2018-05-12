@@ -59,11 +59,11 @@ void treasureTesting(int count)
 	//if there were 2 added treasure cards to the hand
 	if (treas2 - treas == 2) {
 		passes++;
-		printf("Treasure Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas, oldDeckCount, oldDiscardCount, handP);
+		printf("Treasure Test # %d \npassed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas, oldDeckCount, oldDiscardCount, handP);
 	}
 	else {
 		fails++;
-		printf("Tresure Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas, oldDeckCount, oldDiscardCount, handP);
+		printf("Tresure Test # %d \nfailed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas, oldDeckCount, oldDiscardCount, handP);
 	}
 }
 
@@ -79,12 +79,12 @@ void deckTesting(int count)
     if(totalFromDeck == deckDiff)
     {
 		passes++;
-        printf("Deck Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  deck diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff, oldDeckCount, oldDiscardCount, handP);  
+        printf("Deck Test # %d \npassed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  deck diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff, oldDeckCount, oldDiscardCount, handP);  
     }
     else
     {
 		fails++;
-        printf("Deck Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, deck diff = %d\n      p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff, oldDeckCount, oldDiscardCount, handP);  
+        printf("Deck Test # %d \nfailed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, deck diff = %d\n      p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff, oldDeckCount, oldDiscardCount, handP);  
     }
 }
 
@@ -115,12 +115,12 @@ void victoryKingdomTesting(int count)
     if(victoryChange == 0 && kingdomChange == 0)
     {
 		passes++;
-		printf("Victory/Kingdom Card Test # %d passed   \n     # players = %d, hand position = %d, # actions = %d,\n     # buys = %d, victory change = %d, kingdom change: %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys,victoryChange,kingdomChange, oldDeckCount, oldDiscardCount, handP);  
+		printf("Victory/Kingdom Card Test # %d \npassed   \n     # players = %d, hand position = %d, # actions = %d,\n     # buys = %d, victory change = %d, kingdom change: %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys,victoryChange,kingdomChange, oldDeckCount, oldDiscardCount, handP);  
     }
     else
     {
 		fails++;
-		printf("Victory/Kingdom Card Test # %d failed   \n     # players = %d, hand position = %d, # actions = %d,\n     # buys = %d, victory change = %d, kingdom change: %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys,victoryChange,kingdomChange, oldDeckCount, oldDiscardCount, handP);  
+		printf("Victory/Kingdom Card Test # %d \nfailed   \n     # players = %d, hand position = %d, # actions = %d,\n     # buys = %d, victory change = %d, kingdom change: %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys,victoryChange,kingdomChange, oldDeckCount, oldDiscardCount, handP);  
 		
     }
 }
