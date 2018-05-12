@@ -8,7 +8,9 @@
 
 //testing adventurer card
 int main() {
-    struct gameState G, testG;
+	int testNum = 9999999;
+	struct gameState G;
+	struct gameState G2;
 	int handpos = 0;
 	int bonus = 0;
 	int pass = 0, fail = 0;
@@ -16,47 +18,48 @@ int main() {
 	int curPlayer = 0;   
 	int seed = 1000;
 	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};
-	int treasures = 0;
+	int t = 0;
 	
 	int i = 0;
-	for (i; i < 1000000; i++) {
+	for (i; i < testNum; i++) {
 		//start a new game
 		initializeGame(numPlayers, k, seed, &G);
 		
 		//make a test game
-		memcpy(&testG, &G, sizeof(struct gameState));
+		memcpy(&G2, &G, sizeof(struct gameState));
 
 		//change player's first card to adventurer
-		testG.hand[curPlayer][0] = k[0];
+		G2.hand[curPlayer][0] = k[0];
 		
 		//randomize number of players -- limit is from 0 to 10
-		testG.numPlayers = rand() % 11;
+		G2.numPlayers = rand() % 11;
 		//randomize hand position -- limit it to player's hand count
-		handpos = rand() % (testG.handCount[curPlayer] + 1);
+		handpos = rand() % (G2.handCount[curPlayer] + 1);
 		//randomize numActions -- range of 0 to 2
-		testG.numActions = rand() % 3;
+		G2.numActions = rand() % 3;
 		//randomize numBuys -- range of 0 to 2
-		testG.numBuys = rand() % 3;
+		G2.numBuys = rand() % 3;
 		
-		cardEffect(adventurer, 0, 0, 0, &testG, handpos, &bonus);
+		cardEffect(adventurer, 0, 0, 0, &G2, handpos, &bonus);
 		
 		//test that two treasures were drawn
 		int k = 0;
-		for (k; k < testG.handCount[curPlayer]; k++) {
-			if ((testG.hand[curPlayer][k] == copper) || (testG.hand[curPlayer][k] == silver) || (testG.hand[curPlayer][k] == gold)) {
-				treasures++;
+		for (k; k < G2.handCount[curPlayer]; k++) {
+			if ((G2.hand[curPlayer][k] == copper) || (G2.hand[curPlayer][k] == silver) || (G2.hand[curPlayer][k] == gold)) {
+				t++;
 			}
 		}
-		if (treasures == 2) {
+		if (t == 2) {
 			pass++;
+			printf("Test # %d passed   /n     # players = %d, hand position = %d,  /n     # actions = %d, # buys = %d",i,G2.numPlayers, handpos, G2.numActions, G2.numBuys);
 		}
 		else {
 			fail++;
+			printf("Test # %d failed   /n     # players = %d, hand position = %d,  /n     # actions = %d, # buys = %d",i,G2.numPlayers, handpos, G2.numActions, G2.numBuys);
 		}
 		
 
 	}
-	printf("Testing to see if two treasures were drawn...\n");
 	printf("TOTAL PASS: %d\nTOTAL FAIL: %d\n", pass, fail);
     return 0;
 }
