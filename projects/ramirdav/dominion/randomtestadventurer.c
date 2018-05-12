@@ -16,10 +16,10 @@ int main() {
 	int curPlayer = 0;   
 	int seed = 1000;
 	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};
-	int i, x;
 	int treasures = 0;
-		
-	for (x = 0; x < 1000000; x++) {
+	
+	int i = 0;
+	for (i; i < 1000000; i++) {
 		//start a new game
 		initializeGame(numPlayers, k, seed, &G);
 		
@@ -41,8 +41,9 @@ int main() {
 		cardEffect(adventurer, 0, 0, 0, &testG, handpos, &bonus);
 		
 		//test that two treasures were drawn
-		for (i = 0; i < testG.handCount[curPlayer]; i++) {
-			if ((testG.hand[curPlayer][i] == copper) || (testG.hand[curPlayer][i] == silver) || (testG.hand[curPlayer][i] == gold)) {
+		int k = 0;
+		for (k; k < testG.handCount[curPlayer]; k++) {
+			if ((testG.hand[curPlayer][k] == copper) || (testG.hand[curPlayer][k] == silver) || (testG.hand[curPlayer][k] == gold)) {
 				treasures++;
 			}
 		}
