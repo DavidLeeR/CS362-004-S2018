@@ -9,10 +9,11 @@
 //testing adventurer card
 int main() {
     struct gameState G, testG;
-	int handpos = 0, bonus = 0;
+	int handpos = 0;
+	int bonus = 0;
 	int pass = 0, fail = 0;
-	int numPlayers = 2;
-	int thisPlayer = 0;   
+	int numPlayers = 6;
+	int curPlayer = 0;   
 	int seed = 1000;
 	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};
 	int i, x;
@@ -26,12 +27,12 @@ int main() {
 		memcpy(&testG, &G, sizeof(struct gameState));
 
 		//change player's first card to adventurer
-		testG.hand[thisPlayer][0] = k[0];
+		testG.hand[curPlayer][0] = k[0];
 		
 		//randomize number of players -- limit is from 0 to 10
 		testG.numPlayers = rand() % 11;
 		//randomize hand position -- limit it to player's hand count
-		handpos = rand() % (testG.handCount[thisPlayer] + 1);
+		handpos = rand() % (testG.handCount[curPlayer] + 1);
 		//randomize numActions -- range of 0 to 2
 		testG.numActions = rand() % 3;
 		//randomize numBuys -- range of 0 to 2
@@ -40,8 +41,8 @@ int main() {
 		cardEffect(adventurer, 0, 0, 0, &testG, handpos, &bonus);
 		
 		//test that two treasures were drawn
-		for (i = 0; i < testG.handCount[thisPlayer]; i++) {
-			if ((testG.hand[thisPlayer][i] == copper) || (testG.hand[thisPlayer][i] == silver) || (testG.hand[thisPlayer][i] == gold)) {
+		for (i = 0; i < testG.handCount[curPlayer]; i++) {
+			if ((testG.hand[curPlayer][i] == copper) || (testG.hand[curPlayer][i] == silver) || (testG.hand[curPlayer][i] == gold)) {
 				treasures++;
 			}
 		}
