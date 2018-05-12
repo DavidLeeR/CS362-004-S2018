@@ -11,25 +11,39 @@ struct gameState G2;
 int passes = 0;
 int fails = 0;
 int handP = 0;
+int treas;
+
+void beforeTreasureCheck()
+{
+	treas = 0;
+	int p = 0;
+	for (p; p < G2.handCount[G2.whoseTurn]; p++) {
+		
+		if ((G2.hand[G2.whoseTurn][p] == gold) || (G2.hand[G2.whoseTurn][p] == silver) || (G2.hand[G2.whoseTurn][p] == copper)) {
+			treas++;
+		}
+	}
+}
 
 void treasureTesting(int count)
 {
-	int t = 0;
+	int treas2 = 0;
 	//test that two treasures were drawn
 	int k = 0;
 	for (k; k < G2.handCount[G2.whoseTurn]; k++) {
 		
 		if ((G2.hand[G2.whoseTurn][k] == gold) || (G2.hand[G2.whoseTurn][k] == silver) || (G2.hand[G2.whoseTurn][k] == copper)) {
-			t++;
+			treas2++;
 		}
 	}
-	if (t == 2) {
+	//if there were 2 added treasure cards to the hand
+	if (treas2 - treas == 2) {
 		passes++;
-		printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
+		printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
 	}
 	else {
 		fails++;
-		printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
+		printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
 	}
 }
 
@@ -62,7 +76,8 @@ int main() {
 		
 		//randomize hand position -- limit it to player's hand count
 		handP = rand() % (G2.handCount[G2.whoseTurn] + 1);
-	
+		
+		beforeTreasureCheck();
 		
 		cardEffect(adventurer, 0, 0, 0, &G2, handP, &bonus);
 		
