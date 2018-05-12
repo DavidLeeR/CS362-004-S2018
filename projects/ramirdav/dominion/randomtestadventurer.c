@@ -129,12 +129,15 @@ void victoryKingdomTesting(int count)
 int main() {
 	int testNum = 99;
 	int bonus = 0;
-	int numPlayers = rand() % 11;
 	int seed = 1000;
+	int numPlayers;
 	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};
 	
 	int i = 0;
 	for (i; i < testNum; i++) {
+
+		//randomization of players must be done before initialization
+		numPlayers = rand() % (11 - 2) + 2;
 		
 		initializeGame(numPlayers, k, seed, &G);
 		memcpy(&G2, &G, sizeof(struct gameState));
