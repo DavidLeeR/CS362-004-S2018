@@ -18,10 +18,11 @@ int main() {
 	int curPlayer = 0;   
 	int seed = 1000;
 	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};
-	int t = 0;
+	int t;
 	
 	int i = 0;
 	for (i; i < testNum; i++) {
+		t = 0;
 		//start a new game
 		initializeGame(numPlayers, k, seed, &G);
 		
@@ -45,18 +46,18 @@ int main() {
 		//test that two treasures were drawn
 		int k = 0;
 		for (k; k < G2.handCount[curPlayer]; k++) {
-			t = 0;
+			
 			if ((G2.hand[curPlayer][k] == copper) || (G2.hand[curPlayer][k] == silver) || (G2.hand[curPlayer][k] == gold)) {
 				t++;
 			}
 		}
 		if (t == 2) {
 			pass++;
-			printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d\n",i,G2.numPlayers, handpos, G2.numActions, G2.numBuys);
+			printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handpos, G2.numActions, G2.numBuys, t);
 		}
 		else {
 			fail++;
-			printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d\n",i,G2.numPlayers, handpos, G2.numActions, G2.numBuys);
+			printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handpos, G2.numActions, G2.numBuys, t);
 		}
 		
 
