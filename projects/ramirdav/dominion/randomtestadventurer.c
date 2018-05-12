@@ -1,3 +1,7 @@
+//CS 362 Assignment 4
+//Author: David Ramirez
+//Date: 5/13/18
+
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include <string.h>
@@ -6,13 +10,14 @@
 #include "rngs.h"
 #include "interface.h"
 
+
+
 //Random Test 1: Adventurer card
 //1. exactly 2 treasure cards should be added to player 1's hand after playing Adventurer card
 //2. the discarded cards and the 2 treasure cards should come from player 1's supply pile
-//3. there should be no state change for other players
-//4. check if no state change to kingdom/victory card piles
-//5. deck should be shuffled if is 0 when using Adventurer
+//3. check if no state change to kingdom/victory card piles
 
+//Global Variables
 struct gameState G;
 struct gameState G2;
 int passes = 0;
@@ -23,6 +28,7 @@ int oldDeckCount;
 int oldVictoryCount = 36;
 int oldKingdomCount = 104;
 
+//checks the number of treasure cards in player 1's hand before playing Adventurer
 void beforeTreasureCheck()
 {
 	treas = 0;
@@ -36,6 +42,8 @@ void beforeTreasureCheck()
 	//printf("%d\n", treas);
 }
 
+
+//test part 1: checks the number of treasure cards in player 1's hand after playing Adventurer
 void treasureTesting(int count)
 {
 	int treas2 = 0;
@@ -60,6 +68,8 @@ void treasureTesting(int count)
 	}
 }
 
+
+//test part 2: compares the number of cards in the deck before and after playing Adventurer
 void deckTesting(int count)
 {
 	int numDiscarded = G2.discardCount[0];
@@ -79,6 +89,8 @@ void deckTesting(int count)
     }
 }
 
+
+//test part 3: compares the number of victory and kingdom cards before and after playing Adventurer
 void victoryKingdomTesting(int count)
 {
 	int newKingdomCount = 0;
@@ -114,7 +126,7 @@ void victoryKingdomTesting(int count)
     }
 }
 
-//testing adventurer card
+//main test loop
 int main() {
 	int testNum = 99;
 	int bonus = 0;
@@ -124,40 +136,56 @@ int main() {
 	
 	int i = 0;
 	for (i; i < testNum; i++) {
-		//start a new game
-		initializeGame(numPlayers, k, seed, &G);
 		
-		//make a test game
+		initializeGame(numPlayers, k, seed, &G);
 		memcpy(&G2, &G, sizeof(struct gameState));
 
-		//randomize number of players -- limit is from 0 to 10
+
+		/******************************************************************
+		 *                          Randomization                         *
+		 * ***************************************************************/
+
+		//assign random number between 0 and 10 to number of players
 		G2.numPlayers = rand() % 11;
-
-		//change player's first card to adventurer
-		//G2.hand[0][0] = k[0];
-
-		//randomize numActions -- range of 0 to 2
+		//assign random number between 0 and 2 to number of actions
 		G2.numActions = rand() % 3;
-		//randomize numBuys -- range of 0 to 2
+		//assign random number between 0 and 2 to number of buys
 		G2.numBuys = rand() % 3;
-		
-		//randomize hand position -- limit it to player's hand count
+		//Assign random number between 0 and handCount to hand position
 		handP = rand() % (G2.handCount[0] + 1);
 
+		/******************************************************************
+		 *                        Setup for Tests                         *
+		 * ***************************************************************/
+		//Assign adventurer card to current hand position
 		G2.hand[0][handP] = adventurer;
-		
+		//check treasure cards before playing Adventurer
 		beforeTreasureCheck();
-
+		//check deck count before playing Adventurer
 		oldDeckCount = G2.deckCount[0];
 		
+		/******************************************************************
+		 *                          Play Card                             *
+		 * ***************************************************************/
+		//play Adventurer
 		playCard(handP,-1, -1, -1, &G2);
-		//cardEffect(adventurer, -1, -1, -1, &G2, handP, &bonus);
-		
+	
+
+		/******************************************************************
+		 *                          Testing                               *
+		 * ***************************************************************/
+		//test for treasure card number
 		treasureTesting(i);
+
+		//test for deck count
 		deckTesting(i);
+
+		//test for victory/kingdom card number
 		victoryKingdomTesting(i);
 
 	}
+
+	//output totals
 	printf("Adventurer card random test results:\n     Passing Tests:%d\n     Failing Tests:%d\n\n\n\n", passes, fails);
     return 0;
 }
