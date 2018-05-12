@@ -23,7 +23,7 @@ int main() {
 		initializeGame(numPlayers, k, seed, &G);
 		
 		//make a test game
-		memcpy(&testG, &G, sizeof(struct gameState));
+		//memcpy(&testG, &G, sizeof(struct gameState));
 
 		//change player's first card to adventurer
 		testG.hand[thisPlayer][0] = k[0];
@@ -40,8 +40,8 @@ int main() {
 		cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
 		
 		//test that two treasures were drawn
-		for (i = 0; i < testG.handCount[thisPlayer]; i++) {
-			if ((testG.hand[thisPlayer][i] == copper) || (testG.hand[thisPlayer][i] == silver) || (testG.hand[thisPlayer][i] == gold)) {
+		for (i = 0; i < G.handCount[thisPlayer]; i++) {
+			if ((G.hand[thisPlayer][i] == copper) || (G.hand[thisPlayer][i] == silver) || (G.hand[thisPlayer][i] == gold)) {
 				treasures++;
 			}
 		}
