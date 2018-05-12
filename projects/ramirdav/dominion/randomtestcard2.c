@@ -12,10 +12,11 @@
 
 
 //Random Card Test 2: Village card
-//1. exactly 1 card should be drawn into player 1's hand after playing village card
+//1. player 1's deck should be missing exactly 1 cards after playing village card
+//2. exactly 1 card should be drawn into player 1's hand after playing village card
 //2. player 1 should gain exactly 2 action points after playing village card
 //3. the drawn card should come from player 1's supply pile
-//4. there should be no state change for other players
+//???????4. there should be no state change for other players
 //5. there should be no state change for victory/kingdom card piles
 
 //Global Variables
@@ -28,70 +29,50 @@ int treas;
 int oldDeckCount;
 int oldVictoryCount = 36;
 int oldKingdomCount = 104;
-
-//checks the number of treasure cards in player 1's hand before playing Adventurer
-void beforeTreasureCheck()
-{
-	treas = 0;
-	int p = 0;
-	for (p; p < G2.handCount[0]; p++) {
-		
-		if ((G2.hand[0][p] == gold) || (G2.hand[0][p] == silver) || (G2.hand[0][p] == copper)) {
-			treas++;
-		}
-	}
-	//printf("%d\n", treas);
-}
+int oldDiscardCount;
+int oldHandCount;
 
 
-//test part 1: checks the number of treasure cards in player 1's hand after playing Adventurer
-void treasureTesting(int count)
-{
-	int treas2 = 0;
-	//test that two treasures were drawn
-	int k = 0;
-	for (k; k < G2.handCount[0]; k++) {
-		
-		if ((G2.hand[0][k] == gold) || (G2.hand[0][k] == silver) || (G2.hand[0][k] == copper)) {
-			treas2++;
-		}
-	}
 
-	//printf("%d\n", treas2);
-	//if there were 2 added treasure cards to the hand
-	if (treas2 - treas == 2) {
-		passes++;
-		printf("Treasure Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
-	}
-	else {
-		fails++;
-		printf("Tresure Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas);
-	}
-}
-
-
-//test part 2: compares the number of cards in the deck before and after playing Adventurer
+//test part 1: compares the number of cards in the deck before and after playing Village
 void deckTesting(int count)
 {
-	int numDiscarded = G2.discardCount[0];
+
     int newDeckCount = G2.deckCount[0];
-    int totalFromDeck = numDiscarded + 2;       //the total number of cards from the deck should equal all discarded cards and 2 treasure cards
     int deckDiff = oldDeckCount - newDeckCount;
 
-    if(totalFromDeck == deckDiff)
+    if(deckDiff == 1)
     {
 		passes++;
-        printf("Deck Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  deck diff = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff);  
+        printf("Deck Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  deck diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff, oldDeckCount, oldDiscardCount, handP);  
     }
     else
     {
 		fails++;
-        printf("Deck Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, deck diff = %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff);  
+        printf("Deck Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, deck diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, deckDiff,  oldDeckCount, oldDiscardCount, handP);  
+    }
+}
+
+//test part 2: compares the number of cards in the hand before and after playing Village
+void handTesting(int count)
+{
+    int newHandCount = G2.handCount[0];
+    int handDiff = newHandCount - oldHandCount;
+
+    if(handDiff == 1)
+    {
+		passes++;
+        printf("Deck Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d,  hand diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, handDiff, oldDeckCount, oldDiscardCount, handP);  
+    }
+    else
+    {
+		fails++;
+        printf("Deck Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, hand diff = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, handDiff,  oldDeckCount, oldDiscardCount, handP);  
     }
 }
 
 
-//test part 3: compares the number of victory and kingdom cards before and after playing Adventurer
+//test part 3: compares the number of victory and kingdom cards before and after playing Village
 void victoryKingdomTesting(int count)
 {
 	int newKingdomCount = 0;
@@ -117,12 +98,12 @@ void victoryKingdomTesting(int count)
     if(victoryChange == 0 && kingdomChange == 0)
     {
 		passes++;
-		printf("Victory/Kingdom Card Test # %d passed   \n     # players = %d, hand position = %d, # actions = %d,\n     # buys = %d, victory change = %d, kingdom change: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys,victoryChange,kingdomChange);  
+		printf("Victory/Kingdom Card Test # %d passed   \n     # players = %d, hand position = %d, # actions = %d,\n     # buys = %d, victory change = %d, kingdom change: %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys,victoryChange,kingdomChange);  
     }
     else
     {
 		fails++;
-		printf("Victory/Kingdom Card Test # %d failed   \n     # players = %d, hand position = %d, # actions = %d,\n     # buys = %d, victory change = %d, kingdom change: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys,victoryChange,kingdomChange);  
+		printf("Victory/Kingdom Card Test # %d failed   \n     # players = %d, hand position = %d, # actions = %d,\n     # buys = %d, victory change = %d, kingdom change: %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys,victoryChange,kingdomChange);  
 		
     }
 }
@@ -154,16 +135,26 @@ int main() {
 		G2.numBuys = rand() % 3;
 		//Assign random number between 0 and handCount to hand position
 		handP = rand() % (G2.handCount[0] + 1);
+		//randomize deck count for each player (500 is max deck size)
+		int h = 0;
+		for (h; h < numPlayers; h++)
+			G2.deckCount[h] = rand() % 501;
+		//randomize discard count for each player (500 is max deck size)
+		int g = 0;
+		for (g; g < numPlayers; g++)
+			G2.discardCount[g] = rand() % 501;
 
 		/******************************************************************
 		 *                        Setup for Tests                         *
 		 * ***************************************************************/
 		//Assign adventurer card to current hand position
-		G2.hand[0][handP] = adventurer;
-		//check treasure cards before playing Adventurer
-		beforeTreasureCheck();
+		G2.hand[0][handP] = village;
 		//check deck count before playing Adventurer
 		oldDeckCount = G2.deckCount[0];
+		//check discard count before playing Adventurer
+		oldDiscardCount = G2.discardCount[0];
+		//check hand count before playing Adventurer
+		oldHandCount = G2.handCount[0];
 		
 		/******************************************************************
 		 *                          Play Card                             *
@@ -175,11 +166,11 @@ int main() {
 		/******************************************************************
 		 *                          Testing                               *
 		 * ***************************************************************/
-		//test for treasure card number
-		treasureTesting(i);
-
 		//test for deck count
 		deckTesting(i);
+
+		//test for hand count
+		handTesting(i);
 
 		//test for victory/kingdom card number
 		victoryKingdomTesting(i);
