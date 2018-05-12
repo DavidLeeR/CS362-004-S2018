@@ -6,6 +6,27 @@
 #include "rngs.h"
 #include "interface.h"
 
+void treasureTesting(struct gameState &Gtemp, int &passesRef, int &failsRef)
+{
+	int t = 0
+	//test that two treasures were drawn
+	int k = 0;
+	for (k; k < Gtemp.handCount[Gtemp.whoseTurn]; k++) {
+		
+		if ((Gtemp.hand[Gtemp.whoseTurn][k] == gold) || (Gtemp.hand[Gtemp.whoseTurn][k] == silver) || (Gtemp.hand[Gtemp.whoseTurn][k] == copper)) {
+			t++;
+		}
+	}
+	if (t == 2) {
+		passesRef++;
+		printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
+	}
+	else {
+		failsRef++;
+		printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
+	}
+}
+
 //testing adventurer card
 int main() {
 	int testNum = 99;
@@ -14,16 +35,13 @@ int main() {
 	int handP = 0;
 	int bonus = 0;
 	int numPlayers = 2;
-	//int curPlayer = 0;   
 	int seed = 1000;
 	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};
-	int t;
 	struct gameState G;
 	struct gameState G2;
 	
 	int i = 0;
 	for (i; i < testNum; i++) {
-		t = 0;
 		//start a new game
 		initializeGame(numPlayers, k, seed, &G);
 		
@@ -35,33 +53,19 @@ int main() {
 
 		//change player's first card to adventurer
 		G2.hand[G2.whoseTurn][0] = k[0];
-		
-		//randomize hand position -- limit it to player's hand count
-		handP = rand() % (G2.handCount[G2.whoseTurn] + 1);
+
 		//randomize numActions -- range of 0 to 2
 		G2.numActions = rand() % 3;
 		//randomize numBuys -- range of 0 to 2
 		G2.numBuys = rand() % 3;
 		
+		//randomize hand position -- limit it to player's hand count
+		handP = rand() % (G2.handCount[G2.whoseTurn] + 1);
+	
+		
 		cardEffect(adventurer, 0, 0, 0, &G2, handP, &bonus);
 		
-		//test that two treasures were drawn
-		int k = 0;
-		for (k; k < G2.handCount[G2.whoseTurn]; k++) {
-			
-			if ((G2.hand[G2.whoseTurn][k] == copper) || (G2.hand[G2.whoseTurn][k] == silver) || (G2.hand[G2.whoseTurn][k] == gold)) {
-				t++;
-			}
-		}
-		if (t == 2) {
-			passes++;
-			printf("Test # %d passed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
-		}
-		else {
-			fails++;
-			printf("Test # %d failed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n",i,G2.numPlayers, handP, G2.numActions, G2.numBuys, t);
-		}
-		
+		treasureTesting(&G2, &passes, &fails);
 
 	}
 	printf("Adventurer card random test results:\n     Passing Tests:%d\n     Failing Tests:%d\n\n\n\n", passes, fails);
