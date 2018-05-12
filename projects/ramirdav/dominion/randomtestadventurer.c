@@ -12,7 +12,7 @@ int main() {
 	int handpos = 0;
 	int bonus = 0;
 	int pass = 0, fail = 0;
-	int numPlayers = 6;
+	int numPlayers = 2;
 	int curPlayer = 0;   
 	int seed = 1000;
 	int k[10] = {adventurer, great_hall, village, minion, mine, cutpurse,sea_hag, tribute, smithy, council_room};
