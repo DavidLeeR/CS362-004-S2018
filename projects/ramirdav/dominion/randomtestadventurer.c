@@ -9,7 +9,7 @@
 //testing adventurer card
 int main() {
     struct gameState G, testG;
-	int handpos = 0, choice1 = 0, choice2 = 0, choice3 = 0, bonus = 0;
+	int handpos = 0, bonus = 0;
 	int pass = 0, fail = 0;
 	int numPlayers = 2;
 	int thisPlayer = 0;   
@@ -37,7 +37,7 @@ int main() {
 		//randomize numBuys -- range of 0 to 2
 		testG.numBuys = rand() % 3;
 		
-		cardEffect(adventurer, choice1, choice2, choice3, &testG, handpos, &bonus);
+		cardEffect(adventurer, 0, 0, 0, &testG, handpos, &bonus);
 		
 		//test that two treasures were drawn
 		for (i = 0; i < testG.handCount[thisPlayer]; i++) {
