@@ -97,8 +97,6 @@ int playCard(int handPos, int choice1, int choice2, int choice3,
 	     struct gameState *state);
 /* Play card with index handPos from current player's hand */
 
-int drawCard(int player, struct gameState *state);
-
 int buyCard(int supplyPos, struct gameState *state);
 /* Buy card with supply index supplyPos */
 
@@ -129,17 +127,5 @@ int scoreFor(int player, struct gameState *state);
 int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
-
-
-int smithyFunction(int currentPlayerT, struct gameState *stateT, int handPosT);
-
-int adventurerFunction(int *drawnTreasureT, struct gameState *stateT, int currentPlayerT, int *cardDrawnT,int *tempHandT[MAX_HAND],int *zT);
-
-int villageFunction(int currentPlayerT, struct gameState *stateT, int handPosT);
-
-int minionFunction(struct gameState *stateT, int handPosT, int currentPlayerT, int choice1T, int choice2T);
-
-int salvagerFunction(struct gameState *stateT, int currentPlayerT, int handPosT, int choice1T);
-
 
 #endif
