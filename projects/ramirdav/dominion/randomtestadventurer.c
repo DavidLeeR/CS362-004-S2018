@@ -7,7 +7,6 @@
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "rngs.h"
-#include "interface.h"
 
 
 
@@ -175,8 +174,6 @@ int main() {
 		oldDeckCount = G2.deckCount[0];
 		//check discard count before playing Adventurer
 		oldDiscardCount = G2.discardCount[0];
-
-
 
 		//set the victory/kingdom card count depending on number of players
 		if (numPlayers == 2)

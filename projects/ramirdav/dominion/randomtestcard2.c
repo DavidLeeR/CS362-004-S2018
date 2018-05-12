@@ -7,7 +7,6 @@
 #include "dominion.h"
 #include "dominion_helpers.h"
 #include "rngs.h"
-#include "interface.h"
 
 
 
@@ -15,7 +14,6 @@
 //1. player 1's deck should be missing exactly 1 cards after playing village card
 //2. exactly 1 card should be drawn into player 1's hand after playing village card
 //3. player 1 should gain exactly 2 action points after playing village card
-//???????4. there should be no state change for other players
 //4. there should be no state change for victory/kingdom card piles
 
 //Global Variables
@@ -26,8 +24,8 @@ int fails = 0;
 int handP = 0;
 int treas;
 int oldDeckCount;
-int oldVictoryCount = 36;
-int oldKingdomCount = 104;
+int oldVictoryCount;
+int oldKingdomCount;
 int oldDiscardCount;
 int oldHandCount;
 
@@ -173,6 +171,17 @@ int main() {
 		oldDiscardCount = G2.discardCount[0];
 		//check hand count before playing Adventurer
 		oldHandCount = G2.handCount[0];
+		//set the victory/kingdom card count depending on number of players
+		if (numPlayers == 2)
+		{
+			oldVictoryCount = 24;
+			oldKingdomCount = 96;
+		}
+		else
+		{	
+			oldVictoryCount = 36;
+			oldKingdomCount = 104;
+		}
 		
 		/******************************************************************
 		 *                          Play Card                             *
@@ -189,6 +198,9 @@ int main() {
 
 		//test for hand count
 		handTesting(i);
+
+		//test for action points count
+		actionTesting(i);
 
 		//test for victory/kingdom card number
 		victoryKingdomTesting(i);
