@@ -63,6 +63,6 @@ int main() {
 		
 
 	}
-	printf("Adventurer card random test results:\n      Passing Tests:%d\n     Failing Tests:%d\n", pass, fail);
+	printf("Adventurer card random test results:\n      Passing Tests:%d\n     Failing Tests:%d\n", passes, fails);
     return 0;
 }
