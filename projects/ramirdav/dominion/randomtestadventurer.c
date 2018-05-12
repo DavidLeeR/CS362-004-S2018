@@ -151,6 +151,7 @@ int main() {
 		
 		treasureTesting(i);
 		deckTesting(i);
+		victoryKingdomTesting(i);
 
 	}
 	printf("Adventurer card random test results:\n     Passing Tests:%d\n     Failing Tests:%d\n\n\n\n", passes, fails);
