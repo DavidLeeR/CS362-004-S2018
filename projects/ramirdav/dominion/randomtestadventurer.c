@@ -67,7 +67,7 @@ void treasureTesting(int count)
 	}
 	else {
 		fails++;
-		printf("Tresure Test # %d \nfailed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas, oldDeckCount, oldDiscardCount, handP);
+		printf("Treasure Test # %d \nfailed   \n     # players = %d, hand position = %d,  \n     # actions = %d, # buys = %d, # treasures = %d\n     p1 deck: %d, p1 discard: %d, p1 handpos: %d\n",count,G2.numPlayers, handP, G2.numActions, G2.numBuys, treas2-treas, oldDeckCount, oldDiscardCount, handP);
 	}
 }
 
@@ -138,7 +138,7 @@ void victoryKingdomTesting(int count)
 //main test loop
 /******************************************************************************************/
 int main() {
-	int testNum = 1000000;		//number of times to run tests
+	int testNum = 500000;		//number of times to run tests
 	int bonus = 0;
 	int seed = 1000;
 	int numPlayers;
