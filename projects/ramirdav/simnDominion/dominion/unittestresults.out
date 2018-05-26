@@ -1,0 +1,160 @@
+Test Results
+7 PASS22 PASS14 PASS17 PASS11 PASS21 PASS25 PASS19 PASS13 PASS8 PASSUnittest1 - getCost() completed with no errors
+File 'unittest1.c'
+Lines executed:83.33% of 12
+unittest1.c:creating 'unittest1.c.gcov'
+
+File 'dominion.c'
+Lines executed:1.84% of 651
+dominion.c:creating 'dominion.c.gcov'
+
+**SUCCESS
+**SUCCESS
+**SUCCESS
+**SUCCESS
+Unittest2 - whoseTurn() completed with no errors
+File 'unittest2.c'
+Lines executed:85.71% of 14
+unittest2.c:creating 'unittest2.c.gcov'
+
+File 'dominion.c'
+Lines executed:2.00% of 651
+dominion.c:creating 'dominion.c.gcov'
+
+**Great Hall has correct # in supply
+**Gardens has correct # in supply
+**Feast has correct # in supply
+Testing complete with NO errors
+File 'unittest3.c'
+Lines executed:82.61% of 23
+unittest3.c:creating 'unittest3.c.gcov'
+
+File 'dominion.c'
+Lines executed:18.28% of 651
+dominion.c:creating 'dominion.c.gcov'
+
+**Unittest4 -kingdomCards completed with no errors
+File 'unittest4.c'
+Lines executed:46.43% of 56
+unittest4.c:creating 'unittest4.c.gcov'
+
+File 'dominion.c'
+Lines executed:20.12% of 651
+dominion.c:creating 'dominion.c.gcov'
+
+----------------- Testing Card: steward ----------------
+TEST 1: choice1 = 1 = +2 cards
+hand count = 6, expected = 6
+deck count = 3, expected = 3
+coins = 4, expected = 4
+TEST 2: choice1 = 2 = +2 coins
+hand count = 4, expected = 4
+deck count = 5, expected = 5
+coins = 6, expected = 6
+TEST 3: choice1 = 3 = trash two cards
+starting cards: (18)(4)(2)(1)(9); removed: (4)(2); ending cards: (9)(1), expected: (1)(9)
+hand count = 2, expected = 2
+deck count = 5, expected = 5
+starting cards: (18)(4)(2)(1)(9); removed: (4)(1); ending cards: (2)(9), expected: (2)(9)
+starting cards: (18)(4)(2)(1)(9); removed: (4)(9); ending cards: (2)(1), expected: (2)(1)
+starting cards: (18)(4)(2)(1)(9); removed: (2)(1); ending cards: (9)(4), expected: (4)(9)
+starting cards: (18)(4)(2)(1)(9); removed: (2)(9); ending cards: (1)(4), expected: (4)(1)
+starting cards: (18)(4)(2)(1)(9); removed: (1)(9); ending cards: (2)(4), expected: (4)(2)
+
+ >>>>> SUCCESS: Testing complete steward <<<<<
+
+File 'cardtest1.c'
+Lines executed:100.00% of 82
+cardtest1.c:creating 'cardtest1.c.gcov'
+
+File 'dominion.c'
+Lines executed:26.42% of 651
+dominion.c:creating 'dominion.c.gcov'
+
+----------------- Testing Card: steward ----------------
+TEST 1: choice1 = 1 = +2 cards
+hand count = 6, expected = 6
+deck count = 3, expected = 3
+coins = 4, expected = 4
+TEST 2: choice1 = 2 = +2 coins
+hand count = 4, expected = 4
+deck count = 5, expected = 5
+coins = 6, expected = 6
+TEST 3: choice1 = 3 = trash two cards
+starting cards: (18)(4)(2)(1)(9); removed: (4)(2); ending cards: (9)(1), expected: (1)(9)
+hand count = 2, expected = 2
+deck count = 5, expected = 5
+starting cards: (18)(4)(2)(1)(9); removed: (4)(1); ending cards: (2)(9), expected: (2)(9)
+starting cards: (18)(4)(2)(1)(9); removed: (4)(9); ending cards: (2)(1), expected: (2)(1)
+starting cards: (18)(4)(2)(1)(9); removed: (2)(1); ending cards: (9)(4), expected: (4)(9)
+starting cards: (18)(4)(2)(1)(9); removed: (2)(9); ending cards: (1)(4), expected: (4)(1)
+starting cards: (18)(4)(2)(1)(9); removed: (1)(9); ending cards: (2)(4), expected: (4)(2)
+
+ >>>>> SUCCESS: Testing complete steward <<<<<
+
+File 'cardtest2.c'
+Lines executed:100.00% of 82
+cardtest2.c:creating 'cardtest2.c.gcov'
+
+File 'dominion.c'
+Lines executed:26.42% of 651
+dominion.c:creating 'dominion.c.gcov'
+
+----------------- Testing Card: steward ----------------
+TEST 1: choice1 = 1 = +2 cards
+hand count = 6, expected = 6
+deck count = 3, expected = 3
+coins = 4, expected = 4
+TEST 2: choice1 = 2 = +2 coins
+hand count = 4, expected = 4
+deck count = 5, expected = 5
+coins = 6, expected = 6
+TEST 3: choice1 = 3 = trash two cards
+starting cards: (18)(4)(2)(1)(9); removed: (4)(2); ending cards: (9)(1), expected: (1)(9)
+hand count = 2, expected = 2
+deck count = 5, expected = 5
+starting cards: (18)(4)(2)(1)(9); removed: (4)(1); ending cards: (2)(9), expected: (2)(9)
+starting cards: (18)(4)(2)(1)(9); removed: (4)(9); ending cards: (2)(1), expected: (2)(1)
+starting cards: (18)(4)(2)(1)(9); removed: (2)(1); ending cards: (9)(4), expected: (4)(9)
+starting cards: (18)(4)(2)(1)(9); removed: (2)(9); ending cards: (1)(4), expected: (4)(1)
+starting cards: (18)(4)(2)(1)(9); removed: (1)(9); ending cards: (2)(4), expected: (4)(2)
+
+ >>>>> SUCCESS: Testing complete steward <<<<<
+
+File 'cardtest3.c'
+Lines executed:100.00% of 82
+cardtest3.c:creating 'cardtest3.c.gcov'
+
+File 'dominion.c'
+Lines executed:26.42% of 651
+dominion.c:creating 'dominion.c.gcov'
+
+----------------- Testing Card: steward ----------------
+TEST 1: choice1 = 1 = +2 cards
+hand count = 6, expected = 6
+deck count = 3, expected = 3
+coins = 4, expected = 4
+TEST 2: choice1 = 2 = +2 coins
+hand count = 4, expected = 4
+deck count = 5, expected = 5
+coins = 6, expected = 6
+TEST 3: choice1 = 3 = trash two cards
+starting cards: (18)(4)(2)(1)(9); removed: (4)(2); ending cards: (9)(1), expected: (1)(9)
+hand count = 2, expected = 2
+deck count = 5, expected = 5
+starting cards: (18)(4)(2)(1)(9); removed: (4)(1); ending cards: (2)(9), expected: (2)(9)
+starting cards: (18)(4)(2)(1)(9); removed: (4)(9); ending cards: (2)(1), expected: (2)(1)
+starting cards: (18)(4)(2)(1)(9); removed: (2)(1); ending cards: (9)(4), expected: (4)(9)
+starting cards: (18)(4)(2)(1)(9); removed: (2)(9); ending cards: (1)(4), expected: (4)(1)
+starting cards: (18)(4)(2)(1)(9); removed: (1)(9); ending cards: (2)(4), expected: (4)(2)
+
+ >>>>> SUCCESS: Testing complete steward <<<<<
+
+File 'cardtest4.c'
+Lines executed:100.00% of 82
+cardtest4.c:creating 'cardtest4.c.gcov'
+
+File 'dominion.c'
+Lines executed:26.42% of 651
+dominion.c:creating 'dominion.c.gcov'
+
