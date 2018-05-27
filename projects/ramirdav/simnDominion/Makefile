@@ -35,6 +35,23 @@ player: player.c interface.o
 
 all: playdom player 
 
+randomtest.out: randomtestcard1.c dominion.c rngs.c interface.c 
+	echo "randomtestcard1.c:" >> randomtestcard1.out
+	gcc -o randomtestcard1 dominion.c rngs.c interface.c randomtestcard1.c $(CFLAGS)
+	randomtestcard1 >> randomtestcard1.out
+	gcov dominion.c -b -c -f>> randomtestcard1.out
+	
+	echo "randomtestcard2.c:" >> randomtestcard2.out
+	gcc -o randomtestcard2 dominion.c rngs.c interface.c randomtestcard2.c $(CFLAGS)
+	randomtestcard2 >> randomtestcard2.out
+	gcov dominion.c -b -c -f>> randomtestcard2.out
+	
+	echo "randomtestadventurer.c:" >> randomtestadventurer.out
+	gcc -o randomtestadventurer dominion.c rngs.c interface.c randomtestadventurer.c $(CFLAGS)
+	randomtestadventurer >> randomtestadventurer.out
+	gcov dominion.c -b -c -f>> randomtestadventurer.out
+
+
 unittests.out: unittest1.c unittest2.c unittest3.c unittest4.c cardtest1.c cardtest2.c cardtest3.c cardtest4.c dominion.c rngs.c interface.c
 	gcc -o unittest1 dominion.c rngs.c interface.c unittest1.c $(CFLAGS)
 	unittest1 >> unittestresults.out
