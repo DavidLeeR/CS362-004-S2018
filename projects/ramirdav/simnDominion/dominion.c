@@ -744,7 +744,6 @@ int refactorSmithy(int i, int currentPlayer, struct gameState *state, int handPo
       
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
-      state->numBuys++; // (**BUG)
       return 0;
     
 
@@ -756,7 +755,6 @@ int refactorGreathall(int currentPlayer, struct gameState *state, int handPos){
       
       //+1 Actions
       state->numActions++;
-      //state->numActions++; //(**BUG)
       
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
