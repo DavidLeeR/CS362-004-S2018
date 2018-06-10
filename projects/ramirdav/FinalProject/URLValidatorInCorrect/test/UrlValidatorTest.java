@@ -21,7 +21,14 @@ public class UrlValidatorTest extends TestCase {
    
    public void testManualTest()
    {
-//You can use this function to implement your manual testing	   
+//You can use this function to implement your manual testing	 
+	   //String[] schemes = {"http","https"};
+	   UrlValidator urlValidator = new UrlValidator();
+	   if (urlValidator.isValid("1237&(*!&30178")) {
+			   System.out.println("url is valid");
+	   } else {
+			   System.out.println("url is invalid");
+	   }
 	   
    }
    
