@@ -23,8 +23,8 @@ public class UrlValidatorTest extends TestCase {
    {
 //You can use this function to implement your manual testing	 
 	   //String[] schemes = {"http","https"};
-	   UrlValidator urlValidator = new UrlValidator();
-	   if (urlValidator.isValid("1237&(*!&30178")) {
+	   UrlValidator validator = new UrlValidator(UrlValidator.ALLOW_ALL_SCHEMES);
+	   if (validator.isValid("https://www.google.com")) {
 			   System.out.println("url is valid");
 	   } else {
 			   System.out.println("url is invalid");
